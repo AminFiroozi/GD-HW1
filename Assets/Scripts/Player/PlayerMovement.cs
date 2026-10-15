@@ -1,0 +1,99 @@
+using UnityEngine;
+
+namespace Game.Input
+{
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(PlayerInputHandler))]
+    public class PlayerMovement : MonoBehaviour
+    {
+        [Header("Jump")]
+        public float jumpSpeed = 14f;
+        public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);
+        public float groundCheckRadius = 0.12f;
+        public LayerMask groundLayer = ~0;
+
+        // Duck collider keeps the same bottom edge as standing (half height, offset halved)
+        // so it lines up with the ground instead of sinking into it.
+        [Header("Duck")]
+        public Vector2 duckColliderSize = new Vector2(0.5f, 0.45f);
+        public Vector2 duckColliderOffset = new Vector2(0f, -0.225f);
+
+        private Rigidbody2D m_Rigidbody;
+        private PlayerInputHandler m_Input;
+        private BoxCollider2D m_Collider;
+
+        private Vector2 m_StandColliderSize;
+        private Vector2 m_StandColliderOffset;
+        private bool m_WasDucking;
+
+        private void Awake()
+        {
+            m_Rigidbody = GetComponent<Rigidbody2D>();
+            m_Input = GetComponent<PlayerInputHandler>();
+            m_Collider = GetComponent<BoxCollider2D>();
+
+            m_StandColliderSize = m_Collider.size;
+            m_StandColliderOffset = m_Collider.offset;
+        }
+
+        private void Update()
+        {
+            if (m_Input.JumpPressed && IsGrounded())
+            {
+                m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
+            }
+
+            UpdateDuckCollider();
+            GameSpeed.SetDashing(m_Input.DashHeld);
+        }
+
+        private void UpdateDuckCollider()
+        {
+            if (m_Input.DuckHeld == m_WasDucking)
+            {
+                return;
+            }
+
+            m_WasDucking = m_Input.DuckHeld;
+            if (m_WasDucking)
+            {
+                m_Collider.size = duckColliderSize;
+                m_Collider.offset = duckColliderOffset;
+            }
+            else
+            {
+                m_Collider.size = m_StandColliderSize;
+                m_Collider.offset = m_StandColliderOffset;
+            }
+        }
+
+        private static readonly Collider2D[] s_GroundCheckResults = new Collider2D[8];
+
+        private bool IsGrounded()
+        {
+            // OverlapCircle only returns one of possibly several overlapping colliders
+            // (often our own, since the check point sits just past our collider's bottom
+            // edge), so we scan every overlap and exclude ourselves rather than trusting
+            // a single arbitrary result.
+            Vector2 checkPoint = (Vector2)transform.position + groundCheckOffset;
+            int count = Physics2D.OverlapCircleNonAlloc(checkPoint, groundCheckRadius, s_GroundCheckResults, groundLayer);
+            for (int i = 0; i < count; i++)
+            {
+                if (s_GroundCheckResults[i] != null && s_GroundCheckResults[i].gameObject != gameObject)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Vector2 checkPoint = (Vector2)transform.position + groundCheckOffset;
+            Gizmos.DrawWireSphere(checkPoint, groundCheckRadius);
+        }
+    }
+}

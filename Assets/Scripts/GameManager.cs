@@ -51,7 +51,14 @@ namespace Game
         private void TriggerGameOver()
         {
             IsGameOver = true;
+            Time.timeScale = 0f;
             Debug.Log("Game Over");
+        }
+
+        public void RestartGame()
+        {
+            Time.timeScale = 1f;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
     }
 }

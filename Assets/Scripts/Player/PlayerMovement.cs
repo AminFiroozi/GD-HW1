@@ -39,6 +39,11 @@ namespace Game.Input
 
         private void Update()
         {
+            if (Game.GameManager.Instance != null && Game.GameManager.Instance.IsGameOver)
+            {
+                return;
+            }
+
             if (m_Input.JumpPressed && IsGrounded())
             {
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);

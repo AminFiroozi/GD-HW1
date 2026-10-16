@@ -9,6 +9,7 @@ namespace Game
         public int Lives { get; private set; } = 3;
         public float Score { get; private set; } = 0f;
         public bool IsGameOver { get; private set; } = false;
+        public float HighScore { get; private set; } = 0f;
 
         private void Awake()
         {
@@ -19,6 +20,7 @@ namespace Game
             }
 
             Instance = this;
+            HighScore = PlayerPrefs.GetFloat("HighScore", 0f);
         }
 
         public void LoseLife()
@@ -45,6 +47,11 @@ namespace Game
             }
 
             Score += amount;
+            if (Score > HighScore)
+            {
+                HighScore = Score;
+                PlayerPrefs.SetFloat("HighScore", HighScore);
+            }
             Debug.Log($"Score: {Score}");
         }
 
@@ -58,6 +65,12 @@ private void TriggerGameOver()
             if (playerMovement != null)
             {
                 playerMovement.PlayDeathAnimation();
+            }
+
+            var gameOverController = FindFirstObjectByType<Game.UI.GameOverController>();
+            if (gameOverController != null)
+            {
+                gameOverController.Show();
             }
         }
 

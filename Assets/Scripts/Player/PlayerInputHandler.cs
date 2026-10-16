@@ -11,6 +11,7 @@ namespace Game.Input
         public bool DuckHeld { get; private set; }
 
         public event Action JumpPerformed;
+        public event Action PausePerformed;
 
         private PlayerControls m_Controls;
 
@@ -33,6 +34,7 @@ namespace Game.Input
             m_Controls.Player.Dash.canceled += OnDashCanceled;
             m_Controls.Player.Duck.performed += OnDuckPerformed;
             m_Controls.Player.Duck.canceled += OnDuckCanceled;
+            m_Controls.Player.Pause.performed += OnPausePerformed;
         }
 
         private void OnDisable()
@@ -42,6 +44,7 @@ namespace Game.Input
             m_Controls.Player.Dash.canceled -= OnDashCanceled;
             m_Controls.Player.Duck.performed -= OnDuckPerformed;
             m_Controls.Player.Duck.canceled -= OnDuckCanceled;
+            m_Controls.Player.Pause.performed -= OnPausePerformed;
 
             m_Controls.Disable();
         }
@@ -80,6 +83,11 @@ namespace Game.Input
         private void OnDuckCanceled(InputAction.CallbackContext context)
         {
             DuckHeld = false;
+        }
+
+        private void OnPausePerformed(InputAction.CallbackContext context)
+        {
+            PausePerformed?.Invoke();
         }
     }
 }

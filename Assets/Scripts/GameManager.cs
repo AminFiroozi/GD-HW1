@@ -48,11 +48,17 @@ namespace Game
             Debug.Log($"Score: {Score}");
         }
 
-        private void TriggerGameOver()
+private void TriggerGameOver()
         {
             IsGameOver = true;
             Time.timeScale = 0f;
             Debug.Log("Game Over");
+
+            var playerMovement = FindFirstObjectByType<Game.Input.PlayerMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.PlayDeathAnimation();
+            }
         }
 
         public void RestartGame()

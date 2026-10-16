@@ -26,12 +26,16 @@ namespace Game.Input
         private Vector2 m_StandColliderSize;
         private Vector2 m_StandColliderOffset;
         private bool m_WasDucking;
+        private Animator animator;
+
 
         private void Awake()
         {
             m_Rigidbody = GetComponent<Rigidbody2D>();
             m_Input = GetComponent<PlayerInputHandler>();
             m_Collider = GetComponent<BoxCollider2D>();
+            animator = GetComponent<Animator>();
+
 
             m_StandColliderSize = m_Collider.size;
             m_StandColliderOffset = m_Collider.offset;
@@ -50,6 +54,11 @@ namespace Game.Input
             }
 
             UpdateDuckCollider();
+            if (animator != null)
+            {
+                animator.SetBool("IsJumping", !IsGrounded());
+            }
+
             GameSpeed.SetDashing(m_Input.DashHeld);
         }
 
@@ -108,7 +117,24 @@ private void OnTriggerEnter2D(Collider2D other)
             if (interactable != null)
             {
                 interactable.OnPlayerInteract();
+
+                if (interactable is Game.Interactables.GroundObstacle || interactable is Game.Interactables.AirObstacle)
+                {
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("Hit");
+                    }
+                }
             }
         }
+
+public void PlayDeathAnimation()
+        {
+            if (animator != null)
+            {
+                animator.SetTrigger("Death");
+            }
+        }
+
 }
 }

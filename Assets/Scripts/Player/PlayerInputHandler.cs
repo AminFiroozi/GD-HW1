@@ -21,6 +21,11 @@ namespace Game.Input
 
         private void OnEnable()
         {
+            if (m_Controls == null)
+            {
+                m_Controls = new PlayerControls();
+            }
+
             m_Controls.Enable();
 
             m_Controls.Player.Jump.performed += OnJumpPerformed;

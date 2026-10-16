@@ -5,9 +5,10 @@ namespace Game.Interactables
     [RequireComponent(typeof(Collider2D))]
     public class GroundObstacle : Interactable
     {
-        public override void OnPlayerInteract()
+public override void OnPlayerInteract()
         {
             Debug.Log("Player hit ground obstacle");
+            Game.GameManager.Instance.LoseLife();
         }
     }
 }

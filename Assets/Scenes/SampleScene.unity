@@ -1062,6 +1062,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1459237676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459237678}
+  - component: {fileID: 1459237677}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1459237677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459237676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6600d80f2069f445b6f0227167c7589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Spawner
+  spawnables:
+  - prefab: {fileID: 8833994897478914367, guid: fa10078706a54d24099f899df2ba3cb1, type: 3}
+    spawnChance: 0.33
+  - prefab: {fileID: 3030010153369181967, guid: 511a0d436dc8883489a35cdf5f8282a2, type: 3}
+    spawnChance: 0.33
+  - prefab: {fileID: 1422995150287010585, guid: cbf204284183dd84884ec3be21b5fb5e, type: 3}
+    spawnChance: 0.34
+  minSpawnRate: 1.5
+  maxSpawnRate: 3
+  spawnX: 13.71837
+--- !u!4 &1459237678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459237676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1702342530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,3 +1538,4 @@ SceneRoots:
   - {fileID: 557486909}
   - {fileID: 605290474}
   - {fileID: 1861074210}
+  - {fileID: 1459237678}

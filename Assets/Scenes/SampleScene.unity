@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 412814426}
+  - component: {fileID: 412814427}
   m_Layer: 0
   m_Name: ParallaxGroundDetail
   m_TagString: Untagged
@@ -152,6 +153,20 @@ Transform:
   - {fileID: 1702342531}
   m_Father: {fileID: 605290474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412814427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412814425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bad84fd9ca50c74eb1e6e2a1d2b0829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Background.ParallaxLayer
+  speedMultiplier: 0.75
+  tileWidth: 24
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 864886613}
+  - component: {fileID: 864886614}
   m_Layer: 0
   m_Name: ParallaxSky
   m_TagString: Untagged
@@ -691,6 +707,20 @@ Transform:
   - {fileID: 1989760694}
   m_Father: {fileID: 605290474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864886614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864886612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bad84fd9ca50c74eb1e6e2a1d2b0829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Background.ParallaxLayer
+  speedMultiplier: 0.15
+  tileWidth: 24
 --- !u!1 &908094956
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908094957}
+  - component: {fileID: 908094958}
   m_Layer: 0
   m_Name: ParallaxHills
   m_TagString: Untagged
@@ -724,6 +755,20 @@ Transform:
   - {fileID: 600589333}
   m_Father: {fileID: 605290474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908094958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908094956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bad84fd9ca50c74eb1e6e2a1d2b0829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Background.ParallaxLayer
+  speedMultiplier: 0.4
+  tileWidth: 24
 --- !u!1 &926175382
 GameObject:
   m_ObjectHideFlags: 0

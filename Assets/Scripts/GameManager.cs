@@ -66,6 +66,12 @@ private void TriggerGameOver()
             {
                 playerMovement.PlayDeathAnimation();
             }
+
+            var gameOverController = FindFirstObjectByType<Game.UI.GameOverController>();
+            if (gameOverController != null)
+            {
+                gameOverController.Show();
+            }
         }
 
         public void RestartGame()

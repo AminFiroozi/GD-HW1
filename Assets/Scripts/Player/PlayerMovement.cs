@@ -39,6 +39,11 @@ namespace Game.Input
 
         private void Update()
         {
+            if (Game.GameManager.Instance != null && Game.GameManager.Instance.IsGameOver)
+            {
+                return;
+            }
+
             if (m_Input.JumpPressed && IsGrounded())
             {
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
@@ -95,5 +100,15 @@ namespace Game.Input
             Vector2 checkPoint = (Vector2)transform.position + groundCheckOffset;
             Gizmos.DrawWireSphere(checkPoint, groundCheckRadius);
         }
-    }
+    
+
+private void OnTriggerEnter2D(Collider2D other)
+        {
+            var interactable = other.GetComponent<Game.Interactables.Interactable>();
+            if (interactable != null)
+            {
+                interactable.OnPlayerInteract();
+            }
+        }
+}
 }

@@ -19,6 +19,10 @@ namespace Game.Input
         public Vector2 duckColliderSize = new Vector2(0.5f, 0.45f);
         public Vector2 duckColliderOffset = new Vector2(0f, -0.225f);
 
+        [Header("Hit Flash")]
+        public Color hitFlashColor = Color.white;
+        public float hitFlashDuration = 0.15f;
+
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
         private BoxCollider2D m_Collider;
@@ -26,12 +30,24 @@ namespace Game.Input
         private Vector2 m_StandColliderSize;
         private Vector2 m_StandColliderOffset;
         private bool m_WasDucking;
+        private Animator animator;
+        private SpriteRenderer m_SpriteRenderer;
+        private Color m_OriginalSpriteColor;
+        private Coroutine m_HitFlashCoroutine;
+
 
         private void Awake()
         {
             m_Rigidbody = GetComponent<Rigidbody2D>();
             m_Input = GetComponent<PlayerInputHandler>();
             m_Collider = GetComponent<BoxCollider2D>();
+            animator = GetComponent<Animator>();
+            m_SpriteRenderer = GetComponent<SpriteRenderer>();
+            if (m_SpriteRenderer != null)
+            {
+                m_OriginalSpriteColor = m_SpriteRenderer.color;
+            }
+
 
             m_StandColliderSize = m_Collider.size;
             m_StandColliderOffset = m_Collider.offset;
@@ -50,6 +66,11 @@ namespace Game.Input
             }
 
             UpdateDuckCollider();
+            if (animator != null)
+            {
+                animator.SetBool("IsJumping", !IsGrounded());
+            }
+
             GameSpeed.SetDashing(m_Input.DashHeld);
         }
 
@@ -108,7 +129,50 @@ private void OnTriggerEnter2D(Collider2D other)
             if (interactable != null)
             {
                 interactable.OnPlayerInteract();
+
+                if (interactable is Game.Interactables.GroundObstacle || interactable is Game.Interactables.AirObstacle)
+                {
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("Hit");
+                    }
+
+                    StartHitFlash();
+                }
             }
         }
+
+public void PlayDeathAnimation()
+        {
+            if (animator != null)
+            {
+                animator.SetTrigger("Death");
+            }
+        }
+
+        private void StartHitFlash()
+        {
+            if (m_SpriteRenderer == null)
+            {
+                return;
+            }
+
+            if (m_HitFlashCoroutine != null)
+            {
+                StopCoroutine(m_HitFlashCoroutine);
+                m_SpriteRenderer.color = m_OriginalSpriteColor;
+            }
+
+            m_HitFlashCoroutine = StartCoroutine(HitFlashRoutine());
+        }
+
+        private System.Collections.IEnumerator HitFlashRoutine()
+        {
+            m_SpriteRenderer.color = hitFlashColor;
+            yield return new WaitForSeconds(hitFlashDuration);
+            m_SpriteRenderer.color = m_OriginalSpriteColor;
+            m_HitFlashCoroutine = null;
+        }
+
 }
 }

@@ -9,13 +9,15 @@ namespace Game.Input
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_Duck;
+        private readonly InputAction m_Player_Pause;
 
         public PlayerControls()
         {
             m_Player = new InputActionMap("Player");
             m_Player_Jump = m_Player.AddAction("Jump", InputActionType.Button, "<Keyboard>/space");
             m_Player_Dash = m_Player.AddAction("Dash", InputActionType.Button, "<Keyboard>/shift");
-            m_Player_Duck = m_Player.AddAction("Duck", InputActionType.Button, "<Keyboard>/downArrow");
+            m_Player_Duck = m_Player.AddAction("Duck", InputActionType.Button, "<Keyboard>/ctrl");
+            m_Player_Pause = m_Player.AddAction("Pause", InputActionType.Button, "<Keyboard>/escape");
         }
 
         public struct PlayerActions
@@ -30,6 +32,7 @@ namespace Game.Input
             public InputAction Jump => m_Wrapper.m_Player_Jump;
             public InputAction Dash => m_Wrapper.m_Player_Dash;
             public InputAction Duck => m_Wrapper.m_Player_Duck;
+            public InputAction Pause => m_Wrapper.m_Player_Pause;
 
             public void Enable() => m_Wrapper.m_Player.Enable();
             public void Disable() => m_Wrapper.m_Player.Disable();

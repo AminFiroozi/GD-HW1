@@ -13,8 +13,6 @@ namespace Game.Input
         public float groundCheckRadius = 0.12f;
         public LayerMask groundLayer = ~0;
 
-        // Duck collider keeps the same bottom edge as standing (half height, offset halved)
-        // so it lines up with the ground instead of sinking into it.
         [Header("Duck")]
         public Vector2 duckColliderSize = new Vector2(0.5f, 0.45f);
         public Vector2 duckColliderOffset = new Vector2(0f, -0.225f);
@@ -95,12 +93,12 @@ namespace Game.Input
 
         private void UpdateDuckCollider()
         {
-            if (m_Input.DuckHeld == m_WasDucking)
+            if (m_Input.DashHeld == m_WasDucking)
             {
                 return;
             }
 
-            m_WasDucking = m_Input.DuckHeld;
+            m_WasDucking = m_Input.DashHeld;
             if (m_WasDucking)
             {
                 m_Collider.size = duckColliderSize;

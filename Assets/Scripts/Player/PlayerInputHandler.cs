@@ -8,7 +8,6 @@ namespace Game.Input
     {
         public bool JumpPressed { get; private set; }
         public bool DashHeld { get; private set; }
-        public bool DuckHeld { get; private set; }
 
         public event Action JumpPerformed;
         public event Action PausePerformed;
@@ -32,8 +31,6 @@ namespace Game.Input
             m_Controls.Player.Jump.performed += OnJumpPerformed;
             m_Controls.Player.Dash.performed += OnDashPerformed;
             m_Controls.Player.Dash.canceled += OnDashCanceled;
-            m_Controls.Player.Duck.performed += OnDuckPerformed;
-            m_Controls.Player.Duck.canceled += OnDuckCanceled;
             m_Controls.Player.Pause.performed += OnPausePerformed;
         }
 
@@ -42,8 +39,6 @@ namespace Game.Input
             m_Controls.Player.Jump.performed -= OnJumpPerformed;
             m_Controls.Player.Dash.performed -= OnDashPerformed;
             m_Controls.Player.Dash.canceled -= OnDashCanceled;
-            m_Controls.Player.Duck.performed -= OnDuckPerformed;
-            m_Controls.Player.Duck.canceled -= OnDuckCanceled;
             m_Controls.Player.Pause.performed -= OnPausePerformed;
 
             m_Controls.Disable();
@@ -73,16 +68,6 @@ namespace Game.Input
         private void OnDashCanceled(InputAction.CallbackContext context)
         {
             DashHeld = false;
-        }
-
-        private void OnDuckPerformed(InputAction.CallbackContext context)
-        {
-            DuckHeld = true;
-        }
-
-        private void OnDuckCanceled(InputAction.CallbackContext context)
-        {
-            DuckHeld = false;
         }
 
         private void OnPausePerformed(InputAction.CallbackContext context)

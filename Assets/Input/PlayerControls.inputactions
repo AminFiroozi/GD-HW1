@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Duck",
-                    "type": "Button",
-                    "id": "d507d0c3-026e-4559-8c37-b9b140d475c4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "f3a2b914-7c5e-4a1b-9e2a-1c6d8e4f0b3a",
@@ -62,17 +53,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b95c8917-1770-481c-b73d-425ba738d868",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Duck",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

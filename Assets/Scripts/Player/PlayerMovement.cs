@@ -13,15 +13,19 @@ namespace Game.Input
         public float groundCheckRadius = 0.12f;
         public LayerMask groundLayer = ~0;
 
-        // Duck collider keeps the same bottom edge as standing (half height, offset halved)
-        // so it lines up with the ground instead of sinking into it.
         [Header("Duck")]
-        public Vector2 duckColliderSize = new Vector2(0.5f, 0.45f);
-        public Vector2 duckColliderOffset = new Vector2(0f, -0.225f);
+        public Vector2 duckColliderSize = new Vector2(0.5f, 0.3f);
+        public Vector2 duckColliderOffset = new Vector2(0f, -0.3f);
 
         [Header("Hit Flash")]
         public Color hitFlashColor = Color.white;
         public float hitFlashDuration = 0.15f;
+
+        [Header("Jump Dust")]
+        public ParticleSystem jumpDustParticles;
+
+        [Header("Dash Trail")]
+        public TrailRenderer dashTrail;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -42,6 +46,10 @@ namespace Game.Input
             m_Input = GetComponent<PlayerInputHandler>();
             m_Collider = GetComponent<BoxCollider2D>();
             animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.applyRootMotion = false;
+            }
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             if (m_SpriteRenderer != null)
             {
@@ -63,6 +71,10 @@ namespace Game.Input
             if (m_Input.JumpPressed && IsGrounded())
             {
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
+                if (jumpDustParticles != null)
+                {
+                    jumpDustParticles.Play();
+                }
             }
 
             UpdateDuckCollider();
@@ -72,16 +84,21 @@ namespace Game.Input
             }
 
             GameSpeed.SetDashing(m_Input.DashHeld);
+
+            if (dashTrail != null)
+            {
+                dashTrail.emitting = m_Input.DashHeld;
+            }
         }
 
         private void UpdateDuckCollider()
         {
-            if (m_Input.DuckHeld == m_WasDucking)
+            if (m_Input.DashHeld == m_WasDucking)
             {
                 return;
             }
 
-            m_WasDucking = m_Input.DuckHeld;
+            m_WasDucking = m_Input.DashHeld;
             if (m_WasDucking)
             {
                 m_Collider.size = duckColliderSize;
@@ -98,15 +115,12 @@ namespace Game.Input
 
         private bool IsGrounded()
         {
-            // OverlapCircle only returns one of possibly several overlapping colliders
-            // (often our own, since the check point sits just past our collider's bottom
-            // edge), so we scan every overlap and exclude ourselves rather than trusting
-            // a single arbitrary result.
             Vector2 checkPoint = (Vector2)transform.position + groundCheckOffset;
             int count = Physics2D.OverlapCircleNonAlloc(checkPoint, groundCheckRadius, s_GroundCheckResults, groundLayer);
             for (int i = 0; i < count; i++)
             {
-                if (s_GroundCheckResults[i] != null && s_GroundCheckResults[i].gameObject != gameObject)
+                var hit = s_GroundCheckResults[i];
+                if (hit != null && hit.gameObject != gameObject && !hit.isTrigger)
                 {
                     return true;
                 }
@@ -123,7 +137,7 @@ namespace Game.Input
         }
     
 
-private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             var interactable = other.GetComponent<Game.Interactables.Interactable>();
             if (interactable != null)
@@ -142,7 +156,7 @@ private void OnTriggerEnter2D(Collider2D other)
             }
         }
 
-public void PlayDeathAnimation()
+        public void PlayDeathAnimation()
         {
             if (animator != null)
             {
@@ -174,5 +188,5 @@ public void PlayDeathAnimation()
             m_HitFlashCoroutine = null;
         }
 
-}
+    }
 }

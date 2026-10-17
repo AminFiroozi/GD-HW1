@@ -121,7 +121,8 @@ namespace Game.Input
             int count = Physics2D.OverlapCircleNonAlloc(checkPoint, groundCheckRadius, s_GroundCheckResults, groundLayer);
             for (int i = 0; i < count; i++)
             {
-                if (s_GroundCheckResults[i] != null && s_GroundCheckResults[i].gameObject != gameObject)
+                var hit = s_GroundCheckResults[i];
+                if (hit != null && hit.gameObject != gameObject && !hit.isTrigger)
                 {
                     return true;
                 }

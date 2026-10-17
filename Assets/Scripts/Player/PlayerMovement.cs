@@ -70,7 +70,6 @@ namespace Game.Input
 
             if (m_Input.JumpPressed && IsGrounded())
             {
-                Debug.Log("Player jumped");
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
                 if (jumpDustParticles != null)
                 {
@@ -116,10 +115,6 @@ namespace Game.Input
 
         private bool IsGrounded()
         {
-            // OverlapCircle only returns one of possibly several overlapping colliders
-            // (often our own, since the check point sits just past our collider's bottom
-            // edge), so we scan every overlap and exclude ourselves rather than trusting
-            // a single arbitrary result.
             Vector2 checkPoint = (Vector2)transform.position + groundCheckOffset;
             int count = Physics2D.OverlapCircleNonAlloc(checkPoint, groundCheckRadius, s_GroundCheckResults, groundLayer);
             for (int i = 0; i < count; i++)
@@ -142,7 +137,7 @@ namespace Game.Input
         }
     
 
-private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             var interactable = other.GetComponent<Game.Interactables.Interactable>();
             if (interactable != null)
@@ -161,7 +156,7 @@ private void OnTriggerEnter2D(Collider2D other)
             }
         }
 
-public void PlayDeathAnimation()
+        public void PlayDeathAnimation()
         {
             if (animator != null)
             {
@@ -193,5 +188,5 @@ public void PlayDeathAnimation()
             m_HitFlashCoroutine = null;
         }
 
-}
+    }
 }

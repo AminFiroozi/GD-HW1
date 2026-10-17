@@ -4197,8 +4197,8 @@ MonoBehaviour:
   duckColliderOffset: {x: 0, y: -0.225}
   hitFlashColor: {r: 1, g: 1, b: 1, a: 1}
   hitFlashDuration: 0.15
-  jumpDustParticles: {fileID: 0}
-  dashTrail: {fileID: 0}
+  jumpDustParticles: {fileID: 638600143}
+  dashTrail: {fileID: 992520879}
 --- !u!114 &992520873
 MonoBehaviour:
   m_ObjectHideFlags: 0

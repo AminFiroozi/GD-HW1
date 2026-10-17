@@ -23,6 +23,12 @@ namespace Game.Input
         public Color hitFlashColor = Color.white;
         public float hitFlashDuration = 0.15f;
 
+        [Header("Jump Dust")]
+        public ParticleSystem jumpDustParticles;
+
+        [Header("Dash Trail")]
+        public TrailRenderer dashTrail;
+
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
         private BoxCollider2D m_Collider;
@@ -63,6 +69,10 @@ namespace Game.Input
             if (m_Input.JumpPressed && IsGrounded())
             {
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
+                if (jumpDustParticles != null)
+                {
+                    jumpDustParticles.Play();
+                }
             }
 
             UpdateDuckCollider();
@@ -72,6 +82,11 @@ namespace Game.Input
             }
 
             GameSpeed.SetDashing(m_Input.DashHeld);
+
+            if (dashTrail != null)
+            {
+                dashTrail.emitting = m_Input.DashHeld;
+            }
         }
 
         private void UpdateDuckCollider()

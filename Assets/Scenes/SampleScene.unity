@@ -4193,8 +4193,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
-  duckColliderSize: {x: 0.5, y: 0.45}
-  duckColliderOffset: {x: 0, y: -0.225}
+  duckColliderSize: {x: 0.5, y: 0.3}
+  duckColliderOffset: {x: 0, y: -0.3}
   hitFlashColor: {r: 1, g: 1, b: 1, a: 1}
   hitFlashDuration: 0.15
   jumpDustParticles: {fileID: 638600143}

@@ -14,8 +14,8 @@ namespace Game.Input
         public LayerMask groundLayer = ~0;
 
         [Header("Duck")]
-        public Vector2 duckColliderSize = new Vector2(0.5f, 0.45f);
-        public Vector2 duckColliderOffset = new Vector2(0f, -0.225f);
+        public Vector2 duckColliderSize = new Vector2(0.5f, 0.3f);
+        public Vector2 duckColliderOffset = new Vector2(0f, -0.3f);
 
         [Header("Hit Flash")]
         public Color hitFlashColor = Color.white;
@@ -70,6 +70,7 @@ namespace Game.Input
 
             if (m_Input.JumpPressed && IsGrounded())
             {
+                Debug.Log("Player jumped");
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
                 if (jumpDustParticles != null)
                 {

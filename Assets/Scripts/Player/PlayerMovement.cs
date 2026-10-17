@@ -48,6 +48,10 @@ namespace Game.Input
             m_Input = GetComponent<PlayerInputHandler>();
             m_Collider = GetComponent<BoxCollider2D>();
             animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.applyRootMotion = false;
+            }
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             if (m_SpriteRenderer != null)
             {

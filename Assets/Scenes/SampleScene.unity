@@ -4138,13 +4138,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Input.PlayerMovement
   runFrames:
-  - {fileID: 21300000, guid: 07087f2bd1984599b5b66ca1c1391f3f, type: 3}
-  - {fileID: 7624587745620022709, guid: e3afba412019ad2489c3dcf752461166, type: 3}
-  - {fileID: 7408099862559607102, guid: 81787b74641f621488a42f108108b8c6, type: 3}
-  - {fileID: 7828024276422267299, guid: 4aa03fbe11fefeb4b9e48b8000551a81, type: 3}
-  - {fileID: -8270745576660844495, guid: f3a6e69ab0aaebd4e8979ebb8b121c61, type: 3}
-  - {fileID: -2149125394862200871, guid: abc1a5af2724cd24f832e56c647c5d57, type: 3}
+  - {fileID: 3000001, guid: 0edab769e61ca0ef0f48b1750d2d2f5d, type: 3}
+  - {fileID: 3000002, guid: 40a5cd997c33e25cfd328329c489769a, type: 3}
+  - {fileID: 3000003, guid: ea6328ef57418f9f8ce29220a0f36186, type: 3}
+  - {fileID: 3000004, guid: 4e756c77dd0e4c0c406c27e36564dd6f, type: 3}
   jumpSprite: {fileID: 6283952801597915733, guid: eac938f7c73b1ac449de64daf07793a4, type: 3}
+  hurtFrames:
+  - {fileID: 4000001, guid: eaa023827201ff5f5be54dc09af08793, type: 3}
+  - {fileID: 4000002, guid: ebe396a4c4d0877cbdaf4a63109b877a, type: 3}
+  - {fileID: 4000003, guid: e9b7ae7545a5704e86e41013bcd7f96e, type: 3}
+  - {fileID: 4000004, guid: 4cd76da48a84e2dd84236cd11959e7f5, type: 3}
   frameRate: 12
   jumpSpeed: 14
   groundCheckOffset: {x: 0, y: -0.5}
@@ -4292,7 +4295,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 07087f2bd1984599b5b66ca1c1391f3f, type: 3}
+  m_Sprite: {fileID: 3000001, guid: 0edab769e61ca0ef0f48b1750d2d2f5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

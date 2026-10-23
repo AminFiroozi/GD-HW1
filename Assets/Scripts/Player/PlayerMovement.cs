@@ -30,10 +30,12 @@ namespace Game.Input
         [Header("Animation")]
         public Sprite[] runFrames;
         public Sprite jumpSprite;
+        public Sprite[] hurtFrames;
         public float frameRate = 12f;
 
         private int m_FrameIndex;
         private float m_FrameTimer;
+        private bool m_IsHurt;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -114,6 +116,25 @@ namespace Game.Input
         {
             if (m_SpriteRenderer == null)
             {
+                return;
+            }
+
+            if (m_IsHurt)
+            {
+                if (hurtFrames == null || hurtFrames.Length == 0)
+                {
+                    return;
+                }
+
+                m_FrameTimer += Time.deltaTime;
+                float hurtFrameDuration = 1f / frameRate;
+                if (m_FrameTimer >= hurtFrameDuration)
+                {
+                    m_FrameTimer -= hurtFrameDuration;
+                    m_FrameIndex = (m_FrameIndex + 1) % hurtFrames.Length;
+                    m_SpriteRenderer.sprite = hurtFrames[m_FrameIndex];
+                }
+
                 return;
             }
 
@@ -205,10 +226,15 @@ namespace Game.Input
 
         private System.Collections.IEnumerator HitFlashRoutine()
         {
+            m_IsHurt = true;
+            m_FrameIndex = 0;
+            m_FrameTimer = 0f;
+
             m_SpriteRenderer.color = hitFlashColor;
             yield return new WaitForSeconds(hitFlashDuration);
             m_SpriteRenderer.color = m_OriginalSpriteColor;
             m_HitFlashCoroutine = null;
+            m_IsHurt = false;
         }
 
     }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e3afba412019ad2489c3dcf752461166
+guid: ea6328ef57418f9f8ce29220a0f36186
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7624587745620022709
-    second: raptor-run2_0
+      213: 3000003
+    second: raptor_walk3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 9
   spritePivot: {x: 0.5, y: 0}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: raptor-run2_0
+      name: raptor_walk3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 128
+        width: 64
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b55a78682affc960800000000000000
-      internalID: 7624587745620022709
+      spriteID: 18dc35ecde756d8a0800000000000000
+      internalID: 3000003
       vertices: []
       indices: 
       edges: []
@@ -137,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      raptor-run2_0: 7624587745620022709
+      raptor_walk3: 3000003
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

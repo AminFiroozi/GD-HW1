@@ -27,6 +27,14 @@ namespace Game.Input
         [Header("Dash Trail")]
         public TrailRenderer dashTrail;
 
+        [Header("Animation")]
+        public Sprite[] runFrames;
+        public Sprite jumpSprite;
+        public float frameRate = 12f;
+
+        private int m_FrameIndex;
+        private float m_FrameTimer;
+
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
         private BoxCollider2D m_Collider;
@@ -72,6 +80,7 @@ namespace Game.Input
             }
 
             UpdateDuckCollider();
+            UpdateAnimation();
 
             GameSpeed.SetDashing(m_Input.DashHeld);
 
@@ -98,6 +107,39 @@ namespace Game.Input
             {
                 m_Collider.size = m_StandColliderSize;
                 m_Collider.offset = m_StandColliderOffset;
+            }
+        }
+
+        private void UpdateAnimation()
+        {
+            if (m_SpriteRenderer == null)
+            {
+                return;
+            }
+
+            if (!IsGrounded())
+            {
+                if (jumpSprite != null)
+                {
+                    m_SpriteRenderer.sprite = jumpSprite;
+                }
+
+                m_FrameTimer = 0f;
+                return;
+            }
+
+            if (runFrames == null || runFrames.Length == 0)
+            {
+                return;
+            }
+
+            m_FrameTimer += Time.deltaTime;
+            float frameDuration = 1f / frameRate;
+            if (m_FrameTimer >= frameDuration)
+            {
+                m_FrameTimer -= frameDuration;
+                m_FrameIndex = (m_FrameIndex + 1) % runFrames.Length;
+                m_SpriteRenderer.sprite = runFrames[m_FrameIndex];
             }
         }
 

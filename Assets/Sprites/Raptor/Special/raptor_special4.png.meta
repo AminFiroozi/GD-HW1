@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eac938f7c73b1ac449de64daf07793a4
+guid: 445e324b112e5e4c5941f577c64c0862
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6283952801597915733
-    second: raptor-jump_0
+      213: 5000004
+    second: raptor_special4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 9
   spritePivot: {x: 0.5, y: 0}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: raptor-jump_0
+      name: raptor_special4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 128
+        width: 64
+        height: 64
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 552809c77c5153750800000000000000
-      internalID: 6283952801597915733
+      spriteID: 9ff7615fd22ea9600800000000000000
+      internalID: 5000004
       vertices: []
       indices: 
       edges: []
@@ -137,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      raptor-jump_0: 6283952801597915733
+      raptor_special4: 5000004
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -29,13 +29,14 @@ namespace Game.Input
 
         [Header("Animation")]
         public Sprite[] runFrames;
-        public Sprite jumpSprite;
+        public Sprite[] jumpFrames;
         public Sprite[] hurtFrames;
         public float frameRate = 12f;
 
         private int m_FrameIndex;
         private float m_FrameTimer;
         private bool m_IsHurt;
+        private bool m_WasGrounded = true;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -138,16 +139,39 @@ namespace Game.Input
                 return;
             }
 
-            if (!IsGrounded())
+            bool grounded = IsGrounded();
+            if (!grounded)
             {
-                if (jumpSprite != null)
+                if (m_WasGrounded)
                 {
-                    m_SpriteRenderer.sprite = jumpSprite;
+                    m_FrameIndex = 0;
+                    m_FrameTimer = 0f;
                 }
 
-                m_FrameTimer = 0f;
+                m_WasGrounded = false;
+
+                if (jumpFrames == null || jumpFrames.Length == 0)
+                {
+                    return;
+                }
+
+                m_FrameTimer += Time.deltaTime;
+                float jumpFrameDuration = 1f / frameRate;
+                if (m_FrameTimer >= jumpFrameDuration && m_FrameIndex < jumpFrames.Length - 1)
+                {
+                    m_FrameTimer -= jumpFrameDuration;
+                    m_FrameIndex++;
+                    m_SpriteRenderer.sprite = jumpFrames[m_FrameIndex];
+                }
+                else if (m_FrameIndex == 0)
+                {
+                    m_SpriteRenderer.sprite = jumpFrames[0];
+                }
+
                 return;
             }
+
+            m_WasGrounded = true;
 
             if (runFrames == null || runFrames.Length == 0)
             {

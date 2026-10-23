@@ -4142,7 +4142,11 @@ MonoBehaviour:
   - {fileID: 3000002, guid: 40a5cd997c33e25cfd328329c489769a, type: 3}
   - {fileID: 3000003, guid: ea6328ef57418f9f8ce29220a0f36186, type: 3}
   - {fileID: 3000004, guid: 4e756c77dd0e4c0c406c27e36564dd6f, type: 3}
-  jumpSprite: {fileID: 6283952801597915733, guid: eac938f7c73b1ac449de64daf07793a4, type: 3}
+  jumpFrames:
+  - {fileID: 5000001, guid: 11a1ed4cbd21b587ab1e1ccc5bbd8f3f, type: 3}
+  - {fileID: 5000002, guid: 052de5d4ed1bb21ed8c143a58350dd7d, type: 3}
+  - {fileID: 5000003, guid: be10948e31bc91a68f8f98fc819729db, type: 3}
+  - {fileID: 5000004, guid: 445e324b112e5e4c5941f577c64c0862, type: 3}
   hurtFrames:
   - {fileID: 4000001, guid: eaa023827201ff5f5be54dc09af08793, type: 3}
   - {fileID: 4000002, guid: ebe396a4c4d0877cbdaf4a63109b877a, type: 3}

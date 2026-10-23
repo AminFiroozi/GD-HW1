@@ -34,7 +34,7 @@ namespace Game.Input
         public float jumpFrameRate = 10f;
         public Sprite[] hurtFrames;
         public float hurtFrameRate = 15f;
-        public float postAnimationDelay = 0.1f;
+        public int postAnimationDelayFrames = 2;
 
         private int m_FrameIndex;
         private float m_FrameTimer;
@@ -201,7 +201,7 @@ namespace Game.Input
             if (jumpFrames == null || jumpFrames.Length == 0)
             {
                 m_JumpAnimPlaying = false;
-                StartPostAnimDelay();
+                StartPostAnimDelay(jumpFrameRate);
                 return;
             }
 
@@ -209,7 +209,7 @@ namespace Game.Input
             {
                 m_SpriteRenderer.sprite = jumpFrames[0];
                 m_JumpAnimPlaying = false;
-                StartPostAnimDelay();
+                StartPostAnimDelay(jumpFrameRate);
                 return;
             }
 
@@ -223,7 +223,7 @@ namespace Game.Input
                 if (m_FrameIndex >= jumpFrames.Length - 1)
                 {
                     m_JumpAnimPlaying = false;
-                    StartPostAnimDelay();
+                    StartPostAnimDelay(jumpFrameRate);
                 }
             }
             else if (m_FrameIndex == 0)
@@ -232,10 +232,10 @@ namespace Game.Input
             }
         }
 
-        private void StartPostAnimDelay()
+        private void StartPostAnimDelay(float frameRate)
         {
             m_PostAnimDelayActive = true;
-            m_PostAnimDelayTimer = postAnimationDelay;
+            m_PostAnimDelayTimer = postAnimationDelayFrames * (1f / frameRate);
         }
 
         private static readonly Collider2D[] s_GroundCheckResults = new Collider2D[8];
@@ -309,7 +309,7 @@ namespace Game.Input
             m_SpriteRenderer.color = m_OriginalSpriteColor;
             m_HitFlashCoroutine = null;
             m_IsHurt = false;
-            StartPostAnimDelay();
+            StartPostAnimDelay(hurtFrameRate);
         }
 
     }

@@ -29,9 +29,11 @@ namespace Game.Input
 
         [Header("Animation")]
         public Sprite[] runFrames;
+        public float runFrameRate = 12f;
         public Sprite[] jumpFrames;
+        public float jumpFrameRate = 10f;
         public Sprite[] hurtFrames;
-        public float frameRate = 12f;
+        public float hurtFrameRate = 15f;
 
         private int m_FrameIndex;
         private float m_FrameTimer;
@@ -128,7 +130,7 @@ namespace Game.Input
                 }
 
                 m_FrameTimer += Time.deltaTime;
-                float hurtFrameDuration = 1f / frameRate;
+                float hurtFrameDuration = 1f / hurtFrameRate;
                 if (m_FrameTimer >= hurtFrameDuration)
                 {
                     m_FrameTimer -= hurtFrameDuration;
@@ -156,7 +158,7 @@ namespace Game.Input
                 }
 
                 m_FrameTimer += Time.deltaTime;
-                float jumpFrameDuration = 1f / frameRate;
+                float jumpFrameDuration = 1f / jumpFrameRate;
                 if (m_FrameTimer >= jumpFrameDuration && m_FrameIndex < jumpFrames.Length - 1)
                 {
                     m_FrameTimer -= jumpFrameDuration;
@@ -179,10 +181,10 @@ namespace Game.Input
             }
 
             m_FrameTimer += Time.deltaTime;
-            float frameDuration = 1f / frameRate;
-            if (m_FrameTimer >= frameDuration)
+            float runFrameDuration = 1f / runFrameRate;
+            if (m_FrameTimer >= runFrameDuration)
             {
-                m_FrameTimer -= frameDuration;
+                m_FrameTimer -= runFrameDuration;
                 m_FrameIndex = (m_FrameIndex + 1) % runFrames.Length;
                 m_SpriteRenderer.sprite = runFrames[m_FrameIndex];
             }

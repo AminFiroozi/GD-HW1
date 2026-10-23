@@ -5,8 +5,39 @@ namespace Game.Interactables
     [RequireComponent(typeof(Collider2D))]
     public class Coin : Interactable
     {
-public override void OnPlayerInteract()
+        public Sprite[] spinFrames;
+        public float frameRate = 10f;
+
+        private SpriteRenderer m_SpinRenderer;
+        private int m_FrameIndex;
+        private float m_FrameTimer;
+        private bool m_Collected;
+
+        private void Awake()
         {
+            m_SpinRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void Update()
+        {
+            if (m_Collected || spinFrames == null || spinFrames.Length == 0)
+            {
+                return;
+            }
+
+            m_FrameTimer += Time.deltaTime;
+            float frameDuration = 1f / frameRate;
+            if (m_FrameTimer >= frameDuration)
+            {
+                m_FrameTimer -= frameDuration;
+                m_FrameIndex = (m_FrameIndex + 1) % spinFrames.Length;
+                m_SpinRenderer.sprite = spinFrames[m_FrameIndex];
+            }
+        }
+
+        public override void OnPlayerInteract()
+        {
+            m_Collected = true;
             Debug.Log("Player collected coin");
             Game.GameManager.Instance.AddScore(10f);
 

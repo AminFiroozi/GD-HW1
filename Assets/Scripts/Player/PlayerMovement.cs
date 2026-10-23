@@ -32,6 +32,8 @@ namespace Game.Input
         [Header("Animation")]
         public Sprite[] runFrames;
         public float runFrameRate = 12f;
+        public Sprite[] dashFrames;
+        public float dashFrameRate = 18f;
         public Sprite[] jumpFrames;
         public float jumpFrameRate = 10f;
         public Sprite[] hurtFrames;
@@ -228,13 +230,32 @@ namespace Game.Input
                 return;
             }
 
+            if (m_Input.DashHeld)
+            {
+                if (dashFrames == null || dashFrames.Length == 0)
+                {
+                    return;
+                }
+
+                m_FrameTimer += Time.deltaTime;
+                float dashFrameDuration = 1f / dashFrameRate;
+                if (m_FrameTimer >= dashFrameDuration)
+                {
+                    m_FrameTimer -= dashFrameDuration;
+                    m_FrameIndex = (m_FrameIndex + 1) % dashFrames.Length;
+                    m_SpriteRenderer.sprite = dashFrames[m_FrameIndex];
+                }
+
+                return;
+            }
+
             if (runFrames == null || runFrames.Length == 0)
             {
                 return;
             }
 
             m_FrameTimer += Time.deltaTime;
-            float runFrameDuration = 1f / (m_Input.DashHeld ? runFrameRate * GameSpeed.DashMultiplier : runFrameRate);
+            float runFrameDuration = 1f / runFrameRate;
             if (m_FrameTimer >= runFrameDuration)
             {
                 m_FrameTimer -= runFrameDuration;

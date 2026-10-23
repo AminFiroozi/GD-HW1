@@ -234,7 +234,7 @@ namespace Game.Input
             }
 
             m_FrameTimer += Time.deltaTime;
-            float runFrameDuration = 1f / runFrameRate;
+            float runFrameDuration = 1f / (m_Input.DashHeld ? runFrameRate * GameSpeed.DashMultiplier : runFrameRate);
             if (m_FrameTimer >= runFrameDuration)
             {
                 m_FrameTimer -= runFrameDuration;

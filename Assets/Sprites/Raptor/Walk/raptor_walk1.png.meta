@@ -3,7 +3,7 @@ guid: 0edab769e61ca0ef0f48b1750d2d2f5d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3000001
+      213: 21300000
     second: raptor_walk1
   externalObjects: {}
   serializedVersion: 13
@@ -118,7 +118,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: f126bead14f78a860800000000000000
-      internalID: 3000001
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -137,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      raptor_walk1: 3000001
+      raptor_walk1: 21300000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

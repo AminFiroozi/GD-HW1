@@ -4138,22 +4138,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Input.PlayerMovement
   runFrames:
-  - {fileID: 3000001, guid: 0edab769e61ca0ef0f48b1750d2d2f5d, type: 3}
-  - {fileID: 3000002, guid: 40a5cd997c33e25cfd328329c489769a, type: 3}
-  - {fileID: 3000003, guid: ea6328ef57418f9f8ce29220a0f36186, type: 3}
-  - {fileID: 3000004, guid: 4e756c77dd0e4c0c406c27e36564dd6f, type: 3}
+  - {fileID: 21300000, guid: 0edab769e61ca0ef0f48b1750d2d2f5d, type: 3}
+  - {fileID: 21300000, guid: 40a5cd997c33e25cfd328329c489769a, type: 3}
+  - {fileID: 21300000, guid: ea6328ef57418f9f8ce29220a0f36186, type: 3}
+  - {fileID: 21300000, guid: 4e756c77dd0e4c0c406c27e36564dd6f, type: 3}
   runFrameRate: 12
   jumpFrames:
-  - {fileID: 5000001, guid: 11a1ed4cbd21b587ab1e1ccc5bbd8f3f, type: 3}
-  - {fileID: 5000002, guid: 052de5d4ed1bb21ed8c143a58350dd7d, type: 3}
-  - {fileID: 5000003, guid: be10948e31bc91a68f8f98fc819729db, type: 3}
-  - {fileID: 5000004, guid: 445e324b112e5e4c5941f577c64c0862, type: 3}
+  - {fileID: 21300000, guid: 11a1ed4cbd21b587ab1e1ccc5bbd8f3f, type: 3}
+  - {fileID: 21300000, guid: 052de5d4ed1bb21ed8c143a58350dd7d, type: 3}
+  - {fileID: 21300000, guid: be10948e31bc91a68f8f98fc819729db, type: 3}
+  - {fileID: 21300000, guid: 445e324b112e5e4c5941f577c64c0862, type: 3}
   jumpFrameRate: 10
   hurtFrames:
-  - {fileID: 4000001, guid: eaa023827201ff5f5be54dc09af08793, type: 3}
-  - {fileID: 4000002, guid: ebe396a4c4d0877cbdaf4a63109b877a, type: 3}
-  - {fileID: 4000003, guid: e9b7ae7545a5704e86e41013bcd7f96e, type: 3}
-  - {fileID: 4000004, guid: 4cd76da48a84e2dd84236cd11959e7f5, type: 3}
+  - {fileID: 21300000, guid: eaa023827201ff5f5be54dc09af08793, type: 3}
+  - {fileID: 21300000, guid: ebe396a4c4d0877cbdaf4a63109b877a, type: 3}
+  - {fileID: 21300000, guid: e9b7ae7545a5704e86e41013bcd7f96e, type: 3}
+  - {fileID: 21300000, guid: 4cd76da48a84e2dd84236cd11959e7f5, type: 3}
   hurtFrameRate: 15
   jumpSpeed: 14
   groundCheckOffset: {x: 0, y: -0.5}
@@ -4301,7 +4301,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3000001, guid: 0edab769e61ca0ef0f48b1750d2d2f5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0edab769e61ca0ef0f48b1750d2d2f5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

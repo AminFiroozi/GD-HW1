@@ -37,8 +37,11 @@ namespace Game.Input
 
         private int m_FrameIndex;
         private float m_FrameTimer;
+        private int m_HurtFrameIndex;
+        private float m_HurtFrameTimer;
         private bool m_IsHurt;
         private bool m_WasGrounded = true;
+        private bool m_JumpAnimPlaying;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -129,51 +132,39 @@ namespace Game.Input
                     return;
                 }
 
-                m_FrameTimer += Time.deltaTime;
+                m_HurtFrameTimer += Time.deltaTime;
                 float hurtFrameDuration = 1f / hurtFrameRate;
-                if (m_FrameTimer >= hurtFrameDuration)
+                if (m_HurtFrameTimer >= hurtFrameDuration)
                 {
-                    m_FrameTimer -= hurtFrameDuration;
-                    m_FrameIndex = (m_FrameIndex + 1) % hurtFrames.Length;
-                    m_SpriteRenderer.sprite = hurtFrames[m_FrameIndex];
+                    m_HurtFrameTimer -= hurtFrameDuration;
+                    m_HurtFrameIndex = (m_HurtFrameIndex + 1) % hurtFrames.Length;
+                    m_SpriteRenderer.sprite = hurtFrames[m_HurtFrameIndex];
                 }
 
                 return;
             }
 
             bool grounded = IsGrounded();
-            if (!grounded)
+
+            if (!grounded && m_WasGrounded)
             {
-                if (m_WasGrounded)
-                {
-                    m_FrameIndex = 0;
-                    m_FrameTimer = 0f;
-                }
+                m_JumpAnimPlaying = true;
+                m_FrameIndex = 0;
+                m_FrameTimer = 0f;
+            }
 
-                m_WasGrounded = false;
+            m_WasGrounded = grounded;
 
-                if (jumpFrames == null || jumpFrames.Length == 0)
-                {
-                    return;
-                }
-
-                m_FrameTimer += Time.deltaTime;
-                float jumpFrameDuration = 1f / jumpFrameRate;
-                if (m_FrameTimer >= jumpFrameDuration && m_FrameIndex < jumpFrames.Length - 1)
-                {
-                    m_FrameTimer -= jumpFrameDuration;
-                    m_FrameIndex++;
-                    m_SpriteRenderer.sprite = jumpFrames[m_FrameIndex];
-                }
-                else if (m_FrameIndex == 0)
-                {
-                    m_SpriteRenderer.sprite = jumpFrames[0];
-                }
-
+            if (m_JumpAnimPlaying)
+            {
+                UpdateJumpFrame();
                 return;
             }
 
-            m_WasGrounded = true;
+            if (!grounded)
+            {
+                return;
+            }
 
             if (runFrames == null || runFrames.Length == 0)
             {
@@ -187,6 +178,39 @@ namespace Game.Input
                 m_FrameTimer -= runFrameDuration;
                 m_FrameIndex = (m_FrameIndex + 1) % runFrames.Length;
                 m_SpriteRenderer.sprite = runFrames[m_FrameIndex];
+            }
+        }
+
+        private void UpdateJumpFrame()
+        {
+            if (jumpFrames == null || jumpFrames.Length == 0)
+            {
+                m_JumpAnimPlaying = false;
+                return;
+            }
+
+            if (jumpFrames.Length == 1)
+            {
+                m_SpriteRenderer.sprite = jumpFrames[0];
+                m_JumpAnimPlaying = false;
+                return;
+            }
+
+            m_FrameTimer += Time.deltaTime;
+            float jumpFrameDuration = 1f / jumpFrameRate;
+            if (m_FrameTimer >= jumpFrameDuration && m_FrameIndex < jumpFrames.Length - 1)
+            {
+                m_FrameTimer -= jumpFrameDuration;
+                m_FrameIndex++;
+                m_SpriteRenderer.sprite = jumpFrames[m_FrameIndex];
+                if (m_FrameIndex >= jumpFrames.Length - 1)
+                {
+                    m_JumpAnimPlaying = false;
+                }
+            }
+            else if (m_FrameIndex == 0)
+            {
+                m_SpriteRenderer.sprite = jumpFrames[0];
             }
         }
 
@@ -253,8 +277,8 @@ namespace Game.Input
         private System.Collections.IEnumerator HitFlashRoutine()
         {
             m_IsHurt = true;
-            m_FrameIndex = 0;
-            m_FrameTimer = 0f;
+            m_HurtFrameIndex = 0;
+            m_HurtFrameTimer = 0f;
 
             m_SpriteRenderer.color = hitFlashColor;
             yield return new WaitForSeconds(hitFlashDuration);

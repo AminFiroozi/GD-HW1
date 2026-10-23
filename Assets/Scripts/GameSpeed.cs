@@ -1,16 +1,33 @@
+using UnityEngine;
+
 namespace Game.Input
 {
-    // Placeholder values until the parallax/obstacle-spawner phases exist to feel them out.
     public static class GameSpeed
     {
         public static float BaseScrollSpeed = 5f;
+        public static float MaxScrollSpeed = 14f;
+        public static float SpeedRampPerDistance = 0.02f;
         public static float DashMultiplier = 1.8f;
 
-        public static float ScrollSpeed { get; private set; } = BaseScrollSpeed;
+        private static float s_CurrentSpeed = BaseScrollSpeed;
+        private static bool s_IsDashing;
+
+        public static float ScrollSpeed => s_IsDashing ? s_CurrentSpeed * DashMultiplier : s_CurrentSpeed;
 
         public static void SetDashing(bool isDashing)
         {
-            ScrollSpeed = isDashing ? BaseScrollSpeed * DashMultiplier : BaseScrollSpeed;
+            s_IsDashing = isDashing;
+        }
+
+        public static void UpdateForDistance(float distanceTraveled)
+        {
+            s_CurrentSpeed = Mathf.Min(BaseScrollSpeed + distanceTraveled * SpeedRampPerDistance, MaxScrollSpeed);
+        }
+
+        public static void Reset()
+        {
+            s_CurrentSpeed = BaseScrollSpeed;
+            s_IsDashing = false;
         }
     }
 }

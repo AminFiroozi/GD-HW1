@@ -12,30 +12,50 @@ namespace Game
     public class Spawner : MonoBehaviour
     {
         public SpawnableObject[] spawnables;
-        public float minSpawnRate = 1.5f;
-        public float maxSpawnRate = 3f;
+        public float maxGapDistance = 12f;
+        public float minGapDistance = 5f;
+        public float difficultyRampDistance = 300f;
         public float spawnX = 13.71837f;
+
+        private float m_DistanceSinceLastSpawn;
+        private float m_NextGapTarget;
 
         private void Start()
         {
-            Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+            m_NextGapTarget = Random.Range(minGapDistance, maxGapDistance);
         }
 
-        private void Spawn()
+        private void Update()
         {
-            if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
+            if (GameManager.Instance == null || GameManager.Instance.IsGameOver)
             {
                 return;
             }
 
+            m_DistanceSinceLastSpawn += Game.Input.GameSpeed.ScrollSpeed * Time.deltaTime;
+            if (m_DistanceSinceLastSpawn >= m_NextGapTarget)
+            {
+                Spawn();
+                m_DistanceSinceLastSpawn = 0f;
+                m_NextGapTarget = Random.Range(minGapDistance, CurrentMaxGapDistance());
+            }
+        }
+
+        private float CurrentMaxGapDistance()
+        {
+            float distanceTraveled = GameManager.Instance.DistanceTraveled;
+            float difficultyT = Mathf.Clamp01(distanceTraveled / difficultyRampDistance);
+            return Mathf.Lerp(maxGapDistance, minGapDistance, difficultyT);
+        }
+
+        private void Spawn()
+        {
             GameObject prefabToSpawn = PickRandomSpawnable();
             if (prefabToSpawn != null)
             {
                 Vector3 spawnPosition = new Vector3(spawnX, prefabToSpawn.transform.position.y, 0f);
                 Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
             }
-
-            Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
         }
 
         private GameObject PickRandomSpawnable()

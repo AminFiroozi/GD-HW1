@@ -10,6 +10,9 @@ namespace Game
         public float Score { get; private set; } = 0f;
         public bool IsGameOver { get; private set; } = false;
         public float HighScore { get; private set; } = 0f;
+        public float DistanceTraveled { get; private set; } = 0f;
+
+        public float ScorePerDistance = 1f;
 
         private void Awake()
         {
@@ -21,6 +24,20 @@ namespace Game
 
             Instance = this;
             HighScore = PlayerPrefs.GetFloat("HighScore", 0f);
+            Game.Input.GameSpeed.Reset();
+        }
+
+        private void Update()
+        {
+            if (IsGameOver)
+            {
+                return;
+            }
+
+            float deltaDistance = Game.Input.GameSpeed.ScrollSpeed * Time.deltaTime;
+            DistanceTraveled += deltaDistance;
+            Game.Input.GameSpeed.UpdateForDistance(DistanceTraveled);
+            AddScore(deltaDistance * ScorePerDistance);
         }
 
         public void LoseLife()
@@ -55,7 +72,7 @@ namespace Game
             Debug.Log($"Score: {Score}");
         }
 
-private void TriggerGameOver()
+        private void TriggerGameOver()
         {
             IsGameOver = true;
             Time.timeScale = 0f;

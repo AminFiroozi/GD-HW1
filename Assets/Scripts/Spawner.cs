@@ -19,6 +19,9 @@ namespace Game
         public SpawnableObject[] spawnables;
         public float difficultyRampDistance = 1500f;
         public float spawnX = 13.71837f;
+        public float minSpawnSeparation = 2f;
+
+        private float m_DistanceSinceAnySpawn;
 
         private void Start()
         {
@@ -28,6 +31,11 @@ namespace Game
             }
         }
 
+        // 180 + jump_pee/3 + velocity/(height/jump_pee)
+        // 10
+        // 30 : height
+        // 15 : jump pee
+        // 0.2 anie
         private void Update()
         {
             if (GameManager.Instance == null || GameManager.Instance.IsGameOver)
@@ -36,6 +44,7 @@ namespace Game
             }
 
             float distance = Game.Input.GameSpeed.ScrollSpeed * Time.deltaTime;
+            m_DistanceSinceAnySpawn += distance;
 
             foreach (SpawnableObject spawnable in spawnables)
             {
@@ -45,11 +54,13 @@ namespace Game
                 }
 
                 spawnable.distanceSinceLastSpawn += distance;
-                if (spawnable.distanceSinceLastSpawn >= spawnable.nextGapTarget)
+                if (spawnable.distanceSinceLastSpawn >= spawnable.nextGapTarget
+                    && m_DistanceSinceAnySpawn >= minSpawnSeparation)
                 {
                     Spawn(spawnable.prefab);
                     spawnable.distanceSinceLastSpawn = 0f;
                     spawnable.nextGapTarget = Random.Range(spawnable.minGapDistance, CurrentMaxGapDistance(spawnable));
+                    m_DistanceSinceAnySpawn = 0f;
                 }
             }
         }

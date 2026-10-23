@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0736caf79192c2d4794abf2af3e957fc, type: 3}
-  m_Color: {r: 1, g: 0.84, b: 0, a: 1}
+  m_Sprite: {fileID: 1000001, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -140,5 +140,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a230a27f552509b47b22365fc67ebc09, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Interactables.Coin
+  spinFrames:
+  - {fileID: 1000001, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  - {fileID: 1000002, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  - {fileID: 1000003, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  - {fileID: 1000004, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  - {fileID: 1000005, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  - {fileID: 1000006, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  - {fileID: 1000007, guid: 705289bd95793f8ee417c2bef866c22f, type: 3}
+  frameRate: 10

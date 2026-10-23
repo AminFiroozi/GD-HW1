@@ -44,7 +44,7 @@ namespace Game.Input
         private bool m_WasGrounded = true;
         private bool m_JumpAnimPlaying;
         private bool m_PostAnimDelayActive;
-        private float m_PostAnimDelayTimer;
+        private int m_PostAnimDelayFramesRemaining;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -167,8 +167,8 @@ namespace Game.Input
 
             if (m_PostAnimDelayActive)
             {
-                m_PostAnimDelayTimer -= Time.deltaTime;
-                if (m_PostAnimDelayTimer > 0f)
+                m_PostAnimDelayFramesRemaining--;
+                if (m_PostAnimDelayFramesRemaining > 0)
                 {
                     return;
                 }
@@ -201,7 +201,7 @@ namespace Game.Input
             if (jumpFrames == null || jumpFrames.Length == 0)
             {
                 m_JumpAnimPlaying = false;
-                StartPostAnimDelay(jumpFrameRate);
+                StartPostAnimDelay();
                 return;
             }
 
@@ -209,7 +209,7 @@ namespace Game.Input
             {
                 m_SpriteRenderer.sprite = jumpFrames[0];
                 m_JumpAnimPlaying = false;
-                StartPostAnimDelay(jumpFrameRate);
+                StartPostAnimDelay();
                 return;
             }
 
@@ -223,7 +223,7 @@ namespace Game.Input
                 if (m_FrameIndex >= jumpFrames.Length - 1)
                 {
                     m_JumpAnimPlaying = false;
-                    StartPostAnimDelay(jumpFrameRate);
+                    StartPostAnimDelay();
                 }
             }
             else if (m_FrameIndex == 0)
@@ -232,10 +232,10 @@ namespace Game.Input
             }
         }
 
-        private void StartPostAnimDelay(float frameRate)
+        private void StartPostAnimDelay()
         {
             m_PostAnimDelayActive = true;
-            m_PostAnimDelayTimer = postAnimationDelayFrames * (1f / frameRate);
+            m_PostAnimDelayFramesRemaining = postAnimationDelayFrames;
         }
 
         private static readonly Collider2D[] s_GroundCheckResults = new Collider2D[8];
@@ -309,7 +309,7 @@ namespace Game.Input
             m_SpriteRenderer.color = m_OriginalSpriteColor;
             m_HitFlashCoroutine = null;
             m_IsHurt = false;
-            StartPostAnimDelay(hurtFrameRate);
+            StartPostAnimDelay();
         }
 
     }

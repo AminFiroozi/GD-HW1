@@ -1042,10 +1042,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: abdcb0fa6bd34c628c81f530ef7618bc, type: 3}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.7, g: 0.52, b: 0.33, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4166,7 +4166,6 @@ GameObject:
   - component: {fileID: 992520874}
   - component: {fileID: 992520873}
   - component: {fileID: 992520872}
-  - component: {fileID: 992520878}
   - component: {fileID: 992520879}
   m_Layer: 0
   m_Name: Player
@@ -4194,11 +4193,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   duckColliderSize: {x: 0.5, y: 0.3}
-  duckColliderOffset: {x: 0, y: -0.3}
+  duckColliderOffset: {x: 0, y: 0.15}
   hitFlashColor: {r: 1, g: 1, b: 1, a: 1}
   hitFlashDuration: 0.15
-  jumpDustParticles: {fileID: 638600143}
-  dashTrail: {fileID: 992520879}
+  jumpDustParticles: {fileID: 0}
+  dashTrail: {fileID: 0}
 --- !u!114 &992520873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4245,10 +4244,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 2, y: 1}
     newSize: {x: 2, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -4331,7 +4330,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 07087f2bd1984599b5b66ca1c1391f3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4353,35 +4352,13 @@ Transform:
   m_GameObject: {fileID: 992520871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.86, y: 0, z: 0}
+  m_LocalPosition: {x: -5.86, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 638600141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &992520878
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992520871}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: def8c665aaad43d49b256366fb767e11, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!96 &992520879
 TrailRenderer:
   serializedVersion: 4
@@ -5464,8 +5441,9 @@ MonoBehaviour:
     spawnChance: 0.33
   - prefab: {fileID: 1422995150287010585, guid: cbf204284183dd84884ec3be21b5fb5e, type: 3}
     spawnChance: 0.34
-  minSpawnRate: 1.5
-  maxSpawnRate: 3
+  maxGapDistance: 12
+  minGapDistance: 5
+  difficultyRampDistance: 300
   spawnX: 13.71837
 --- !u!4 &1459237678
 Transform:
@@ -5499,8 +5477,10 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -5889,7 +5869,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 51026f0513d615d49b2138fe0ec431f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6064,6 +6044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c4ae886ece13040a477fdbe9e1f9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.GameManager
+  ScorePerDistance: 1
 --- !u!4 &1861074210
 Transform:
   m_ObjectHideFlags: 0
@@ -6565,7 +6546,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 51026f0513d615d49b2138fe0ec431f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

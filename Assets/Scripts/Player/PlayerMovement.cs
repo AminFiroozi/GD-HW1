@@ -34,7 +34,6 @@ namespace Game.Input
         private Vector2 m_StandColliderSize;
         private Vector2 m_StandColliderOffset;
         private bool m_WasDucking;
-        private Animator animator;
         private SpriteRenderer m_SpriteRenderer;
         private Color m_OriginalSpriteColor;
         private Coroutine m_HitFlashCoroutine;
@@ -45,11 +44,6 @@ namespace Game.Input
             m_Rigidbody = GetComponent<Rigidbody2D>();
             m_Input = GetComponent<PlayerInputHandler>();
             m_Collider = GetComponent<BoxCollider2D>();
-            animator = GetComponent<Animator>();
-            if (animator != null)
-            {
-                animator.applyRootMotion = false;
-            }
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             if (m_SpriteRenderer != null)
             {
@@ -78,10 +72,6 @@ namespace Game.Input
             }
 
             UpdateDuckCollider();
-            if (animator != null)
-            {
-                animator.SetBool("IsJumping", !IsGrounded());
-            }
 
             GameSpeed.SetDashing(m_Input.DashHeld);
 
@@ -146,11 +136,6 @@ namespace Game.Input
 
                 if (interactable is Game.Interactables.GroundObstacle || interactable is Game.Interactables.AirObstacle)
                 {
-                    if (animator != null)
-                    {
-                        animator.SetTrigger("Hit");
-                    }
-
                     StartHitFlash();
                 }
             }
@@ -158,10 +143,6 @@ namespace Game.Input
 
         public void PlayDeathAnimation()
         {
-            if (animator != null)
-            {
-                animator.SetTrigger("Death");
-            }
         }
 
         private void StartHitFlash()

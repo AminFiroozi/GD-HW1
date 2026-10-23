@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3030010153369181967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: -1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1e753014df4c34d9985d00a0d39c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Interactables.AirObstacle
+  speedMultiplier: 1.5
   flapFrames:
   - {fileID: 2000001, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
   - {fileID: 2000002, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}

@@ -8,6 +8,7 @@ namespace Game
         public GameObject prefab;
         public float minGapDistance = 5f;
         public float maxGapDistance = 12f;
+        public float minScoreToSpawn = 0f;
 
         [System.NonSerialized] public float distanceSinceLastSpawn;
         [System.NonSerialized] public float nextGapTarget;
@@ -38,6 +39,11 @@ namespace Game
 
             foreach (SpawnableObject spawnable in spawnables)
             {
+                if (GameManager.Instance.Score < spawnable.minScoreToSpawn)
+                {
+                    continue;
+                }
+
                 spawnable.distanceSinceLastSpawn += distance;
                 if (spawnable.distanceSinceLastSpawn >= spawnable.nextGapTarget)
                 {

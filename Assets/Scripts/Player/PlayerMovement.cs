@@ -9,6 +9,8 @@ namespace Game.Input
     {
         [Header("Jump")]
         public float jumpSpeed = 14f;
+        public float maxJumpHoldTime = 0.2f;
+        public float jumpHoldForce = 20f;
         public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);
         public float groundCheckRadius = 0.12f;
         public LayerMask groundLayer = ~0;
@@ -69,6 +71,8 @@ namespace Game.Input
         private Vector2 m_StandColliderSize;
         private Vector2 m_StandColliderOffset;
         private bool m_WasDucking;
+        private bool m_JumpHoldActive;
+        private float m_JumpHoldTimeRemaining;
         private SpriteRenderer m_SpriteRenderer;
         private Color m_OriginalSpriteColor;
         private Coroutine m_HitFlashCoroutine;
@@ -103,9 +107,24 @@ namespace Game.Input
                 return;
             }
 
+            if (m_JumpHoldActive)
+            {
+                if (m_Input.JumpHeld && m_JumpHoldTimeRemaining > 0f && !IsGrounded())
+                {
+                    m_Rigidbody.linearVelocity += Vector2.up * jumpHoldForce * Time.deltaTime;
+                    m_JumpHoldTimeRemaining -= Time.deltaTime;
+                }
+                else
+                {
+                    m_JumpHoldActive = false;
+                }
+            }
+
             if (m_Input.JumpPressed && IsGrounded())
             {
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, jumpSpeed);
+                m_JumpHoldTimeRemaining = maxJumpHoldTime;
+                m_JumpHoldActive = true;
                 if (jumpDustParticles != null)
                 {
                     jumpDustParticles.Play();

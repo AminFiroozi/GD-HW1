@@ -5,8 +5,8 @@ namespace Game.Interactables
     [RequireComponent(typeof(Collider2D))]
     public class GroundObstacle : Interactable
     {
-        public float minScale = 0.8f;
-        public float maxScale = 1.4f;
+        public float minScale = 1f;
+        public float maxScale = 2f;
 
         private bool m_Hit;
 

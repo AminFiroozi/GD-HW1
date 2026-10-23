@@ -3,11 +3,8 @@ guid: ee5a6ca6b6ca44145afb13cc12208f35
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1347608343896061964
-    second: bat_flap1_0
-  - first:
-      213: 8279769549656685298
-    second: bat_flap1_1
+      213: 21300000
+    second: bat_flap1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,35 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bat_flap1_0
+      name: bat_flap1
       rect:
         serializedVersion: 2
-        x: 14
-        y: 12
-        width: 52
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f709b5e9555c4de0800000000000000
-      internalID: -1347608343896061964
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bat_flap1_1
-      rect:
-        serializedVersion: 2
-        x: 63
+        x: 0
         y: 0
-        width: 12
-        height: 23
+        width: 75
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2faf16d8986a7e270800000000000000
-      internalID: 8279769549656685298
+      spriteID: 5e97eb03825dee720800000000000000
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -152,7 +127,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -162,8 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bat_flap1_0: -1347608343896061964
-      bat_flap1_1: 8279769549656685298
+      bat_flap1: 21300000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

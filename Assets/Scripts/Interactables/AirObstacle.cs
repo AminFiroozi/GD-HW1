@@ -7,6 +7,8 @@ namespace Game.Interactables
     {
         public Sprite[] flapFrames;
         public float frameRate = 8f;
+        public float minY = 1.5f;
+        public float maxY = 2.5f;
 
         private SpriteRenderer m_SpriteRenderer;
         private int m_FrameIndex;
@@ -16,6 +18,10 @@ namespace Game.Interactables
         private void Awake()
         {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
+
+            Vector3 position = transform.position;
+            position.y = Random.Range(minY, maxY);
+            transform.position = position;
         }
 
         protected override void Update()

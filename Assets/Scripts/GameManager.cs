@@ -75,7 +75,6 @@ namespace Game
         private void TriggerGameOver()
         {
             IsGameOver = true;
-            Time.timeScale = 0f;
             Debug.Log("Game Over");
 
             var playerMovement = FindFirstObjectByType<Game.Input.PlayerMovement>();
@@ -85,6 +84,19 @@ namespace Game
             }
 
             var gameOverController = FindFirstObjectByType<Game.UI.GameOverController>();
+
+            StartCoroutine(ShowGameOverUIRoutine(playerMovement, gameOverController));
+        }
+
+        private System.Collections.IEnumerator ShowGameOverUIRoutine(Game.Input.PlayerMovement playerMovement, Game.UI.GameOverController gameOverController)
+        {
+            if (playerMovement != null)
+            {
+                yield return new WaitUntil(() => playerMovement.IsDeathSequenceReadyForUI);
+            }
+
+            Time.timeScale = 0f;
+
             if (gameOverController != null)
             {
                 gameOverController.Show();

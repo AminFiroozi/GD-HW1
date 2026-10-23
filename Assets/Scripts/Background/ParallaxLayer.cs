@@ -22,6 +22,11 @@ namespace Game.Background
 
         void Update()
         {
+            if (GameManager.Instance == null || GameManager.Instance.IsGameOver)
+            {
+                return;
+            }
+
             float speed = GameSpeed.ScrollSpeed * speedMultiplier;
             float delta = speed * Time.deltaTime;
             float wrapDistance = tileWidth * tiles.Length;

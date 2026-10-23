@@ -35,6 +35,13 @@ namespace Game.Input
         public Sprite[] hurtFrames;
         public float hurtFrameRate = 15f;
         public int postAnimationDelayFrames = 2;
+        public Sprite[] deathFrames;
+        public float deathFrameRate = 10f;
+        public Sprite[] deathIdleFrames;
+        public float deathIdleFrameRate = 8f;
+        public int postDeathDelayFrames = 20;
+
+        public bool IsDeathSequenceReadyForUI { get; private set; }
 
         private int m_FrameIndex;
         private float m_FrameTimer;
@@ -45,6 +52,15 @@ namespace Game.Input
         private bool m_JumpAnimPlaying;
         private bool m_PostAnimDelayActive;
         private int m_PostAnimDelayFramesRemaining;
+
+        private bool m_IsDead;
+        private int m_DeathFrameIndex;
+        private float m_DeathFrameTimer;
+        private bool m_DeathAnimPlaying;
+        private bool m_DeathIdleLooping;
+        private int m_DeathIdleFrameIndex;
+        private float m_DeathIdleFrameTimer;
+        private int m_PostDeathDelayFramesRemaining;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -76,6 +92,12 @@ namespace Game.Input
 
         private void Update()
         {
+            if (m_IsDead)
+            {
+                UpdateAnimation();
+                return;
+            }
+
             if (Game.GameManager.Instance != null && Game.GameManager.Instance.IsGameOver)
             {
                 return;
@@ -125,6 +147,12 @@ namespace Game.Input
         {
             if (m_SpriteRenderer == null)
             {
+                return;
+            }
+
+            if (m_IsDead)
+            {
+                UpdateDeathFrame();
                 return;
             }
 
@@ -238,6 +266,83 @@ namespace Game.Input
             m_PostAnimDelayFramesRemaining = postAnimationDelayFrames;
         }
 
+        private void UpdateDeathFrame()
+        {
+            if (m_DeathAnimPlaying)
+            {
+                if (deathFrames == null || deathFrames.Length == 0)
+                {
+                    m_DeathAnimPlaying = false;
+                    StartDeathIdleLoop();
+                    return;
+                }
+
+                if (deathFrames.Length == 1)
+                {
+                    m_SpriteRenderer.sprite = deathFrames[0];
+                    m_DeathAnimPlaying = false;
+                    StartDeathIdleLoop();
+                    return;
+                }
+
+                m_DeathFrameTimer += Time.deltaTime;
+                float deathFrameDuration = 1f / deathFrameRate;
+                if (m_DeathFrameTimer >= deathFrameDuration && m_DeathFrameIndex < deathFrames.Length - 1)
+                {
+                    m_DeathFrameTimer -= deathFrameDuration;
+                    m_DeathFrameIndex++;
+                    m_SpriteRenderer.sprite = deathFrames[m_DeathFrameIndex];
+                    if (m_DeathFrameIndex >= deathFrames.Length - 1)
+                    {
+                        m_DeathAnimPlaying = false;
+                        StartDeathIdleLoop();
+                    }
+                }
+                else if (m_DeathFrameIndex == 0)
+                {
+                    m_SpriteRenderer.sprite = deathFrames[0];
+                }
+
+                return;
+            }
+
+            if (m_DeathIdleLooping)
+            {
+                if (deathIdleFrames != null && deathIdleFrames.Length > 0)
+                {
+                    m_DeathIdleFrameTimer += Time.deltaTime;
+                    float deathIdleFrameDuration = 1f / deathIdleFrameRate;
+                    if (m_DeathIdleFrameTimer >= deathIdleFrameDuration)
+                    {
+                        m_DeathIdleFrameTimer -= deathIdleFrameDuration;
+                        m_DeathIdleFrameIndex = (m_DeathIdleFrameIndex + 1) % deathIdleFrames.Length;
+                        m_SpriteRenderer.sprite = deathIdleFrames[m_DeathIdleFrameIndex];
+                    }
+                }
+
+                if (!IsDeathSequenceReadyForUI)
+                {
+                    m_PostDeathDelayFramesRemaining--;
+                    if (m_PostDeathDelayFramesRemaining <= 0)
+                    {
+                        IsDeathSequenceReadyForUI = true;
+                    }
+                }
+            }
+        }
+
+        private void StartDeathIdleLoop()
+        {
+            m_DeathIdleLooping = true;
+            m_DeathIdleFrameIndex = 0;
+            m_DeathIdleFrameTimer = 0f;
+            if (deathIdleFrames != null && deathIdleFrames.Length > 0)
+            {
+                m_SpriteRenderer.sprite = deathIdleFrames[0];
+            }
+            m_PostDeathDelayFramesRemaining = postDeathDelayFrames;
+        }
+
         private static readonly Collider2D[] s_GroundCheckResults = new Collider2D[8];
 
         private bool IsGrounded()
@@ -280,6 +385,16 @@ namespace Game.Input
 
         public void PlayDeathAnimation()
         {
+            m_IsDead = true;
+            IsDeathSequenceReadyForUI = false;
+            m_DeathAnimPlaying = true;
+            m_DeathIdleLooping = false;
+            m_DeathFrameIndex = 0;
+            m_DeathFrameTimer = 0f;
+            m_DeathIdleFrameIndex = 0;
+            m_DeathIdleFrameTimer = 0f;
+            m_PostDeathDelayFramesRemaining = postDeathDelayFrames;
+            m_Rigidbody.linearVelocity = Vector2.zero;
         }
 
         private void StartHitFlash()

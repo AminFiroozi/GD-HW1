@@ -9,6 +9,11 @@ namespace Game.Interactables
 
         protected virtual void Update()
         {
+            if (GameManager.Instance == null || GameManager.Instance.IsGameOver)
+            {
+                return;
+            }
+
             transform.Translate(Vector3.left * GameSpeed.ScrollSpeed * speedMultiplier * Time.deltaTime);
 
             if (Camera.main.WorldToViewportPoint(transform.position).x < -0.1f)

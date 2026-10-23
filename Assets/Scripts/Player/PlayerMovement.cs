@@ -34,6 +34,7 @@ namespace Game.Input
         public float jumpFrameRate = 10f;
         public Sprite[] hurtFrames;
         public float hurtFrameRate = 15f;
+        public float postAnimationDelay = 0.1f;
 
         private int m_FrameIndex;
         private float m_FrameTimer;
@@ -42,6 +43,8 @@ namespace Game.Input
         private bool m_IsHurt;
         private bool m_WasGrounded = true;
         private bool m_JumpAnimPlaying;
+        private bool m_PostAnimDelayActive;
+        private float m_PostAnimDelayTimer;
 
         private Rigidbody2D m_Rigidbody;
         private PlayerInputHandler m_Input;
@@ -149,6 +152,7 @@ namespace Game.Input
             if (!grounded && m_WasGrounded)
             {
                 m_JumpAnimPlaying = true;
+                m_PostAnimDelayActive = false;
                 m_FrameIndex = 0;
                 m_FrameTimer = 0f;
             }
@@ -159,6 +163,17 @@ namespace Game.Input
             {
                 UpdateJumpFrame();
                 return;
+            }
+
+            if (m_PostAnimDelayActive)
+            {
+                m_PostAnimDelayTimer -= Time.deltaTime;
+                if (m_PostAnimDelayTimer > 0f)
+                {
+                    return;
+                }
+
+                m_PostAnimDelayActive = false;
             }
 
             if (!grounded)
@@ -186,6 +201,7 @@ namespace Game.Input
             if (jumpFrames == null || jumpFrames.Length == 0)
             {
                 m_JumpAnimPlaying = false;
+                StartPostAnimDelay();
                 return;
             }
 
@@ -193,6 +209,7 @@ namespace Game.Input
             {
                 m_SpriteRenderer.sprite = jumpFrames[0];
                 m_JumpAnimPlaying = false;
+                StartPostAnimDelay();
                 return;
             }
 
@@ -206,12 +223,19 @@ namespace Game.Input
                 if (m_FrameIndex >= jumpFrames.Length - 1)
                 {
                     m_JumpAnimPlaying = false;
+                    StartPostAnimDelay();
                 }
             }
             else if (m_FrameIndex == 0)
             {
                 m_SpriteRenderer.sprite = jumpFrames[0];
             }
+        }
+
+        private void StartPostAnimDelay()
+        {
+            m_PostAnimDelayActive = true;
+            m_PostAnimDelayTimer = postAnimationDelay;
         }
 
         private static readonly Collider2D[] s_GroundCheckResults = new Collider2D[8];
@@ -285,6 +309,7 @@ namespace Game.Input
             m_SpriteRenderer.color = m_OriginalSpriteColor;
             m_HitFlashCoroutine = null;
             m_IsHurt = false;
+            StartPostAnimDelay();
         }
 
     }

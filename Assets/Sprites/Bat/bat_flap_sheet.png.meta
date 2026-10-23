@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 8589ddb39486ab44d9058e5179a3785f
+guid: ed3e3560b1fc3d9f115485bf5be2761c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2442254035184850978
-    second: bat_flap4_0
+      213: 2000001
+    second: bat_flap_sheet_0
+  - first:
+      213: 2000002
+    second: bat_flap_sheet_1
+  - first:
+      213: 2000003
+    second: bat_flap_sheet_2
+  - first:
+      213: 2000004
+    second: bat_flap_sheet_3
+  - first:
+      213: 2000005
+    second: bat_flap_sheet_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,44 +114,136 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bat_flap4_0
+      name: bat_flap_sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 75
-        height: 60
+        y: 48
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
+      customData:
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed7ea8505ee5b1ed0800000000000000
-      internalID: -2442254035184850978
+      spriteID: 9f2aa812d48b95730800000000000000
+      internalID: 2000001
       vertices: []
-      indices: 
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bat_flap_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67dbefdcd3f7ce820800000000000000
+      internalID: 2000002
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bat_flap_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 633013504832f6f90800000000000000
+      internalID: 2000003
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bat_flap_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434ad963b280d6a60800000000000000
+      internalID: 2000004
+      vertices: []
+      indices:
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bat_flap_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData:
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480f3d0bf3965db50800000000000000
+      internalID: 2000005
+      vertices: []
+      indices:
       edges: []
       weights: []
     outline: []
-    customData: 
+    customData:
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID:
     internalID: 0
     vertices: []
-    indices: 
+    indices:
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bat_flap4_0: -2442254035184850978
-  mipmapLimitGroupName: 
+      bat_flap_sheet_0: 2000001
+      bat_flap_sheet_1: 2000002
+      bat_flap_sheet_2: 2000003
+      bat_flap_sheet_3: 2000004
+      bat_flap_sheet_4: 2000005
+  mipmapLimitGroupName:
   pSDRemoveMatte: 0
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

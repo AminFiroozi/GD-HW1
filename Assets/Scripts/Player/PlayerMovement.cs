@@ -310,13 +310,20 @@ namespace Game.Input
             {
                 if (deathIdleFrames != null && deathIdleFrames.Length > 0)
                 {
-                    m_DeathIdleFrameTimer += Time.deltaTime;
-                    float deathIdleFrameDuration = 1f / deathIdleFrameRate;
-                    if (m_DeathIdleFrameTimer >= deathIdleFrameDuration)
+                    if (deathIdleFrames.Length == 1)
                     {
-                        m_DeathIdleFrameTimer -= deathIdleFrameDuration;
-                        m_DeathIdleFrameIndex = (m_DeathIdleFrameIndex + 1) % deathIdleFrames.Length;
-                        m_SpriteRenderer.sprite = deathIdleFrames[m_DeathIdleFrameIndex];
+                        m_SpriteRenderer.sprite = deathIdleFrames[0];
+                    }
+                    else
+                    {
+                        m_DeathIdleFrameTimer += Time.deltaTime;
+                        float deathIdleFrameDuration = 1f / deathIdleFrameRate;
+                        if (m_DeathIdleFrameTimer >= deathIdleFrameDuration && m_DeathIdleFrameIndex < deathIdleFrames.Length - 1)
+                        {
+                            m_DeathIdleFrameTimer -= deathIdleFrameDuration;
+                            m_DeathIdleFrameIndex++;
+                            m_SpriteRenderer.sprite = deathIdleFrames[m_DeathIdleFrameIndex];
+                        }
                     }
                 }
 

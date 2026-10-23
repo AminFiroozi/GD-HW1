@@ -5,7 +5,16 @@ namespace Game.Interactables
     [RequireComponent(typeof(Collider2D))]
     public class GroundObstacle : Interactable
     {
+        public float minScale = 0.8f;
+        public float maxScale = 1.4f;
+
         private bool m_Hit;
+
+        private void Awake()
+        {
+            float scale = Random.Range(minScale, maxScale);
+            transform.localScale = new Vector3(scale, scale, 1f);
+        }
 
         public override void OnPlayerInteract()
         {

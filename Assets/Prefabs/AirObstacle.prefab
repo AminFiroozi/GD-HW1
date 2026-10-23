@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1347608343896061964, guid: ee5a6ca6b6ca44145afb13cc12208f35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee5a6ca6b6ca44145afb13cc12208f35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9, y: 0.75}
+  m_Size: {x: 0.9375, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -150,5 +150,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc1e753014df4c34d9985d00a0d39c5a, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Interactables.AirObstacle
+  flapFrames:
+  - {fileID: 21300000, guid: ee5a6ca6b6ca44145afb13cc12208f35, type: 3}
+  - {fileID: 21300000, guid: 465c6049876d21242a2254ba76a5ae37, type: 3}
+  - {fileID: 21300000, guid: 6ed40f93c244da745bb7be407ea757c5, type: 3}
+  frameRate: 8

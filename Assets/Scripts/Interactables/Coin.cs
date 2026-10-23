@@ -18,8 +18,10 @@ namespace Game.Interactables
             m_SpinRenderer = GetComponent<SpriteRenderer>();
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             if (m_Collected || spinFrames == null || spinFrames.Length == 0)
             {
                 return;

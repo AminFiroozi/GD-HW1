@@ -31,12 +31,14 @@ namespace Game.Background
 
             float distance = GameSpeed.ScrollSpeed * Time.deltaTime;
             m_DistanceSinceLastSpawn += distance;
+            DecorativeSpawnTracker.Advance();
 
-            if (m_DistanceSinceLastSpawn >= m_NextGapTarget)
+            if (m_DistanceSinceLastSpawn >= m_NextGapTarget && DecorativeSpawnTracker.CanSpawn())
             {
                 Spawn();
                 m_DistanceSinceLastSpawn = 0f;
                 m_NextGapTarget = Random.Range(minGapDistance, maxGapDistance);
+                DecorativeSpawnTracker.NotifySpawned();
             }
         }
 

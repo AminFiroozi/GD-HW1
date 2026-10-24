@@ -5455,6 +5455,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5712905651986443323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5507913573111486531}
+  - component: {fileID: 5323937138277350129}
+  m_Layer: 0
+  m_Name: DecorativeCloudSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5507913573111486531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712905651986443323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5323937138277350129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712905651986443323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af53294351784e8ca983978cfb29a95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Background.DecorativeCloudSpawner
+  cloudPrefab: {fileID: 4721585294751850117, guid: 26b1bf12acaf42b4a4c39b83571cfe2f, type: 3}
+  cloudSprites:
+  - {fileID: 21300000, guid: 7be6a29c4c80420e808495b8bdccf867, type: 3}
+  - {fileID: 21300000, guid: ce72fe066a664d3ba76729429e856669, type: 3}
+  - {fileID: 21300000, guid: 01044f8338ef47338186d61fec8ccbe7, type: 3}
+  - {fileID: 21300000, guid: cae2e4922dbb4070b133d86a143d01d6, type: 3}
+  - {fileID: 21300000, guid: d789802397d84684bf85237657a0e63a, type: 3}
+  - {fileID: 21300000, guid: fba2b5a9be894b69a6c22b804125c72b, type: 3}
+  - {fileID: 21300000, guid: 7a948737bc804fb5aa1b79e8becc1c0b, type: 3}
+  - {fileID: 21300000, guid: 322949c8903e49e59a189d82be3506c2, type: 3}
+  - {fileID: 21300000, guid: 8eb8e69d6d11433b98be8f9cfdc43d68, type: 3}
+  - {fileID: 21300000, guid: b339384a660744b3b3c93f2b6bc96c9f, type: 3}
+  minGapDistance: 10
+  maxGapDistance: 24
+  spawnX: 13.71837
+  minY: 4.3
+  maxY: 5
+  behindHillsSortingOrder: -25
+  behindHillsSpeedMultiplier: 0.2
+  aboveHillsSortingOrder: -10
+  aboveHillsSpeedMultiplier: 0.35
 --- !u!1 &5587850586315881453
 GameObject:
   m_ObjectHideFlags: 0
@@ -6975,3 +7040,4 @@ SceneRoots:
   - {fileID: 1459237678}
   - {fileID: 1010032794}
   - {fileID: 542107430}
+  - {fileID: 5507913573111486531}

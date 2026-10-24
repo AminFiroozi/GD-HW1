@@ -17,9 +17,9 @@ namespace Game
     public class Spawner : MonoBehaviour
     {
         public SpawnableObject[] spawnables;
-        public float difficultyRampDistance = 1500f;
+        public float difficultyRampDistance = 1000f;
         public float spawnX = 13.71837f;
-        public float minSpawnSeparation = 2f;
+        public float minSpawnSeparation = 3f;
 
         private float m_DistanceSinceAnySpawn;
 

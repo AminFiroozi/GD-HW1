@@ -6,7 +6,7 @@ namespace Game.Input
     {
         public static float BaseScrollSpeed = 5f;
         public static float MaxScrollSpeed = 14f;
-        public static float SpeedRampPerDistance = 0.02f;
+        public static float SpeedRampPerDistance = 0.01f;
         public static float DashMultiplier = 1.8f;
 
         private static float s_CurrentSpeed = BaseScrollSpeed;

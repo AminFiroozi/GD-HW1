@@ -5488,8 +5488,8 @@ MonoBehaviour:
   minGapDistance: 14
   maxGapDistance: 32
   spawnX: 13.71837
-  minYJitter: -0.1
-  maxYJitter: 0.1
+  minYJitter: -0.2
+  maxYJitter: 1.5
   minScaleJitter: 0.85
   maxScaleJitter: 1.25
 --- !u!4 &4536851936060229980

@@ -9,8 +9,8 @@ namespace Game.Background
         public float minGapDistance = 14f;
         public float maxGapDistance = 32f;
         public float spawnX = 13.71837f;
-        public float minYJitter = -0.1f;
-        public float maxYJitter = 0.1f;
+        public float minYJitter = -0.2f;
+        public float maxYJitter = 1.5f;
         public float minScaleJitter = 0.85f;
         public float maxScaleJitter = 1.25f;
 

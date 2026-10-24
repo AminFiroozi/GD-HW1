@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 8833994897478914367}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10, y: 0.45, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,14 +131,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.453125, y: 0.5}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.4375, y: 0.5}
     newSize: {x: 0.4375, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4375, y: 0.45}
+  m_Size: {x: 0.284375, y: 0.325}
   m_EdgeRadius: 0
 --- !u!114 &5683445383185547826
 MonoBehaviour:
@@ -152,3 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff2368cd5b04654da4ad5b09b049837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Interactables.GroundObstacle
+  speedMultiplier: 1
+  minScale: 1.5
+  maxScale: 2.5

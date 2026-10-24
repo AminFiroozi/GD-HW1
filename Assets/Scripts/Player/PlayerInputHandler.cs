@@ -7,7 +7,9 @@ namespace Game.Input
     public class PlayerInputHandler : MonoBehaviour
     {
         public bool JumpPressed { get; private set; }
+        public bool JumpHeld { get; private set; }
         public bool DashHeld { get; private set; }
+        public bool DashPressed { get; private set; }
 
         public event Action JumpPerformed;
         public event Action PausePerformed;
@@ -29,6 +31,7 @@ namespace Game.Input
             m_Controls.Enable();
 
             m_Controls.Player.Jump.performed += OnJumpPerformed;
+            m_Controls.Player.Jump.canceled += OnJumpCanceled;
             m_Controls.Player.Dash.performed += OnDashPerformed;
             m_Controls.Player.Dash.canceled += OnDashCanceled;
             m_Controls.Player.Pause.performed += OnPausePerformed;
@@ -37,6 +40,7 @@ namespace Game.Input
         private void OnDisable()
         {
             m_Controls.Player.Jump.performed -= OnJumpPerformed;
+            m_Controls.Player.Jump.canceled -= OnJumpCanceled;
             m_Controls.Player.Dash.performed -= OnDashPerformed;
             m_Controls.Player.Dash.canceled -= OnDashCanceled;
             m_Controls.Player.Pause.performed -= OnPausePerformed;
@@ -52,17 +56,25 @@ namespace Game.Input
         private void LateUpdate()
         {
             JumpPressed = false;
+            DashPressed = false;
         }
 
         private void OnJumpPerformed(InputAction.CallbackContext context)
         {
             JumpPressed = true;
+            JumpHeld = true;
             JumpPerformed?.Invoke();
+        }
+
+        private void OnJumpCanceled(InputAction.CallbackContext context)
+        {
+            JumpHeld = false;
         }
 
         private void OnDashPerformed(InputAction.CallbackContext context)
         {
             DashHeld = true;
+            DashPressed = true;
         }
 
         private void OnDashCanceled(InputAction.CallbackContext context)

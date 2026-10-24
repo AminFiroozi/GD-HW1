@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3030010153369181967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: -1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1347608343896061964, guid: ee5a6ca6b6ca44145afb13cc12208f35, type: 3}
+  m_Sprite: {fileID: 2000001, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9, y: 0.75}
+  m_Size: {x: 0.5, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -130,15 +130,15 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.03125, y: 0.15625, z: 0.0625, w: 0.09375}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8125, y: 0.59375}
-    newSize: {x: 0.9, y: 0.75}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.5, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.55, y: 0.45}
+  m_Size: {x: 0.325, y: 0.4875}
   m_EdgeRadius: 0
 --- !u!114 &8655255563877742589
 MonoBehaviour:
@@ -152,3 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1e753014df4c34d9985d00a0d39c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Interactables.AirObstacle
+  speedMultiplier: 1.1
+  flapFrames:
+  - {fileID: 2000001, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
+  - {fileID: 2000002, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
+  - {fileID: 2000003, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
+  - {fileID: 2000004, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
+  - {fileID: 2000005, guid: ed3e3560b1fc3d9f115485bf5be2761c, type: 3}
+  frameRate: 10
+  minY: 1.5
+  maxY: 2.5

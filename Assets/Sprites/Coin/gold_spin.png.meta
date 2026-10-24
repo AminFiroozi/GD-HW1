@@ -128,17 +128,51 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 3, w: 5}
+      customData: 
+      outline:
+      - - {x: 5.5, y: -9.5}
+        - {x: 10.5, y: -5.5}
+        - {x: 11.5, y: -2.5}
+        - {x: 11.5, y: 1.5}
+        - {x: 10.5, y: 4.5}
+        - {x: 5.5, y: 8.5}
+        - {x: 3.5, y: 8.5}
+        - {x: 2.5, y: 9.5}
+        - {x: -2.5, y: 9.5}
+        - {x: -5.5, y: 8.5}
+        - {x: -9.5, y: 4.5}
+        - {x: -10.5, y: 1.5}
+        - {x: -10.5, y: -2.5}
+        - {x: -9.5, y: -5.5}
+        - {x: -5.5, y: -9.5}
+        - {x: -2.5, y: -10.5}
+        - {x: 2.5, y: -10.5}
+      physicsShape:
+      - - {x: 5.5, y: -7.5}
+        - {x: 8.5, y: -4.5}
+        - {x: 9.5, y: -2.5}
+        - {x: 9.5, y: 1.5}
+        - {x: 8.5, y: 3.5}
+        - {x: 5.5, y: 6.5}
+        - {x: 3.5, y: 6.5}
+        - {x: 2.5, y: 7.5}
+        - {x: -2.5, y: 7.5}
+        - {x: -4.5, y: 6.5}
+        - {x: -7.5, y: 3.5}
+        - {x: -8.5, y: 1.5}
+        - {x: -8.5, y: -2.5}
+        - {x: -7.5, y: -4.5}
+        - {x: -4.5, y: -7.5}
+        - {x: -2.5, y: -8.5}
+        - {x: 2.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: 0c0b1b7aca1b66bd0800000000000000
       internalID: 1000001
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -150,17 +184,43 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 4, z: 4, w: 5}
+      customData: 
+      outline:
+      - - {x: 5.5, y: -9.5}
+        - {x: 10.5, y: -4.5}
+        - {x: 10.5, y: 3.5}
+        - {x: 5.5, y: 8.5}
+        - {x: 3.5, y: 8.5}
+        - {x: 2.5, y: 9.5}
+        - {x: -2.5, y: 9.5}
+        - {x: -8.5, y: 4.5}
+        - {x: -9.5, y: 1.5}
+        - {x: -9.5, y: -2.5}
+        - {x: -8.5, y: -5.5}
+        - {x: -5.5, y: -9.5}
+        - {x: -2.5, y: -10.5}
+      physicsShape:
+      - - {x: 5.5, y: -7.5}
+        - {x: 8.5, y: -4.5}
+        - {x: 8.5, y: 3.5}
+        - {x: 5.5, y: 6.5}
+        - {x: 2.5, y: 7.5}
+        - {x: -2.5, y: 7.5}
+        - {x: -6.5, y: 3.5}
+        - {x: -7.5, y: 1.5}
+        - {x: -7.5, y: -2.5}
+        - {x: -6.5, y: -3.5}
+        - {x: -6.5, y: -5.5}
+        - {x: -4.5, y: -7.5}
+        - {x: -2.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: 7cbcc5ce759d7b9c0800000000000000
       internalID: 1000002
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -172,17 +232,35 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 4, z: 6, w: 5}
+      customData: 
+      outline:
+      - - {x: 8.5, y: -5.5}
+        - {x: 8.5, y: 3.5}
+        - {x: 7.5, y: 6.5}
+        - {x: 3.5, y: 9.5}
+        - {x: -3.5, y: 9.5}
+        - {x: -7.5, y: 3.5}
+        - {x: -7.5, y: -4.5}
+        - {x: -6.5, y: -7.5}
+        - {x: -2.5, y: -10.5}
+        - {x: 3.5, y: -10.5}
+      physicsShape:
+      - - {x: 6.5, y: -5.5}
+        - {x: 6.5, y: 3.5}
+        - {x: 3.5, y: 7.5}
+        - {x: -2.5, y: 7.5}
+        - {x: -5.5, y: 3.5}
+        - {x: -5.5, y: -4.5}
+        - {x: -2.5, y: -8.5}
+        - {x: 3.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: 0e0ba1beb529080f0800000000000000
       internalID: 1000003
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -194,17 +272,33 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 4, z: 9, w: 5}
+      customData: 
+      outline:
+      - - {x: 5.5, y: -7.5}
+        - {x: 5.5, y: 8.5}
+        - {x: 2.5, y: 9.5}
+        - {x: -2.5, y: 9.5}
+        - {x: -5.5, y: 6.5}
+        - {x: -5.5, y: -7.5}
+        - {x: -2.5, y: -10.5}
+        - {x: 4.5, y: -10.5}
+      physicsShape:
+      - - {x: 3.5, y: -7.5}
+        - {x: 3.5, y: 6.5}
+        - {x: 2.5, y: 7.5}
+        - {x: -2.5, y: 7.5}
+        - {x: -3.5, y: 6.5}
+        - {x: -3.5, y: -7.5}
+        - {x: -2.5, y: -8.5}
+        - {x: 2.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: a7886decdeec36c40800000000000000
       internalID: 1000004
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -216,17 +310,36 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 4, z: 6, w: 5}
+      customData: 
+      outline:
+      - - {x: 7.5, y: -7.5}
+        - {x: 8.5, y: -4.5}
+        - {x: 8.5, y: 2.5}
+        - {x: 6.5, y: 7.5}
+        - {x: 3.5, y: 9.5}
+        - {x: -3.5, y: 9.5}
+        - {x: -7.5, y: 4.5}
+        - {x: -7.5, y: -5.5}
+        - {x: -2.5, y: -10.5}
+        - {x: 3.5, y: -10.5}
+      physicsShape:
+      - - {x: 5.5, y: -6.5}
+        - {x: 6.5, y: -4.5}
+        - {x: 6.5, y: 2.5}
+        - {x: 3.5, y: 7.5}
+        - {x: -2.5, y: 7.5}
+        - {x: -5.5, y: 4.5}
+        - {x: -5.5, y: -5.5}
+        - {x: -2.5, y: -8.5}
+        - {x: 3.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: efe7e1fd3e1794e70800000000000000
       internalID: 1000005
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -238,17 +351,46 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 4, z: 4, w: 5}
+      customData: 
+      outline:
+      - - {x: 6.5, y: -9.5}
+        - {x: 9.5, y: -5.5}
+        - {x: 10.5, y: -2.5}
+        - {x: 10.5, y: 1.5}
+        - {x: 9.5, y: 4.5}
+        - {x: 3.5, y: 9.5}
+        - {x: -1.5, y: 9.5}
+        - {x: -2.5, y: 8.5}
+        - {x: -4.5, y: 8.5}
+        - {x: -9.5, y: 3.5}
+        - {x: -9.5, y: -4.5}
+        - {x: -4.5, y: -9.5}
+        - {x: -1.5, y: -9.5}
+        - {x: -0.5, y: -10.5}
+        - {x: 3.5, y: -10.5}
+      physicsShape:
+      - - {x: 7.5, y: -5.5}
+        - {x: 8.5, y: -2.5}
+        - {x: 8.5, y: 1.5}
+        - {x: 7.5, y: 3.5}
+        - {x: 3.5, y: 7.5}
+        - {x: -1.5, y: 7.5}
+        - {x: -2.5, y: 6.5}
+        - {x: -4.5, y: 6.5}
+        - {x: -7.5, y: 3.5}
+        - {x: -7.5, y: -4.5}
+        - {x: -4.5, y: -7.5}
+        - {x: -1.5, y: -7.5}
+        - {x: -0.5, y: -8.5}
+        - {x: 3.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: 7415fb91401493720800000000000000
       internalID: 1000006
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     - serializedVersion: 2
@@ -260,27 +402,61 @@ TextureImporter:
         width: 25
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData:
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 3, w: 5}
+      customData: 
+      outline:
+      - - {x: 6.5, y: -9.5}
+        - {x: 10.5, y: -5.5}
+        - {x: 11.5, y: -2.5}
+        - {x: 11.5, y: 1.5}
+        - {x: 10.5, y: 4.5}
+        - {x: 6.5, y: 8.5}
+        - {x: 3.5, y: 9.5}
+        - {x: -1.5, y: 9.5}
+        - {x: -4.5, y: 8.5}
+        - {x: -9.5, y: 4.5}
+        - {x: -10.5, y: 1.5}
+        - {x: -10.5, y: -2.5}
+        - {x: -9.5, y: -5.5}
+        - {x: -4.5, y: -9.5}
+        - {x: -2.5, y: -9.5}
+        - {x: -1.5, y: -10.5}
+        - {x: 3.5, y: -10.5}
+      physicsShape:
+      - - {x: 5.5, y: -7.5}
+        - {x: 8.5, y: -4.5}
+        - {x: 9.5, y: -2.5}
+        - {x: 9.5, y: 1.5}
+        - {x: 8.5, y: 3.5}
+        - {x: 5.5, y: 6.5}
+        - {x: 3.5, y: 7.5}
+        - {x: -1.5, y: 7.5}
+        - {x: -4.5, y: 6.5}
+        - {x: -7.5, y: 3.5}
+        - {x: -8.5, y: 1.5}
+        - {x: -8.5, y: -2.5}
+        - {x: -7.5, y: -4.5}
+        - {x: -4.5, y: -7.5}
+        - {x: -2.5, y: -7.5}
+        - {x: -1.5, y: -8.5}
+        - {x: 3.5, y: -8.5}
+      tessellationDetail: 1
       bones: []
       spriteID: 0c6cee7ead95890a0800000000000000
       internalID: 1000007
       vertices: []
-      indices:
+      indices: 
       edges: []
       weights: []
     outline: []
-    customData:
+    customData: 
     physicsShape: []
     bones: []
-    spriteID:
+    spriteID: 5af66205ed1d83443bd3585c812585e0
     internalID: 0
     vertices: []
-    indices:
+    indices: 
     edges: []
     weights: []
     secondaryTextures: []
@@ -294,8 +470,8 @@ TextureImporter:
       gold_spin_4: 1000005
       gold_spin_5: 1000006
       gold_spin_6: 1000007
-  mipmapLimitGroupName:
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

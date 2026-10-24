@@ -5,9 +5,16 @@ namespace Game.Interactables
 {
     public abstract class Interactable : MonoBehaviour
     {
+        public float speedMultiplier = 1f;
+
         protected virtual void Update()
         {
-            transform.Translate(Vector3.left * GameSpeed.ScrollSpeed * Time.deltaTime);
+            if (GameManager.Instance == null || GameManager.Instance.IsGameOver)
+            {
+                return;
+            }
+
+            transform.Translate(Vector3.left * GameSpeed.ScrollSpeed * speedMultiplier * Time.deltaTime);
 
             if (Camera.main.WorldToViewportPoint(transform.position).x < -0.1f)
             {

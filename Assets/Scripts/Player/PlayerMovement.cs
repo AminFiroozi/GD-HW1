@@ -10,6 +10,7 @@ namespace Game.Input
         [Header("Jump")]
         public float jumpSpeed = 14f;
         public float jumpCutMultiplier = 0.5f;
+        public float airDashFallSpeed = 20f;
         public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);
         public float groundCheckRadius = 0.12f;
         public LayerMask groundLayer = ~0;
@@ -107,10 +108,15 @@ namespace Game.Input
                 return;
             }
 
-            if (!IsGrounded() && !m_JumpCutApplied && !m_Input.JumpHeld && m_Rigidbody.linearVelocity.y > 0f)
+            if (!IsGrounded() && !m_JumpCutApplied && !m_Input.JumpHeld && !m_Input.DashHeld && m_Rigidbody.linearVelocity.y > 0f)
             {
                 m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, m_Rigidbody.linearVelocity.y * jumpCutMultiplier);
                 m_JumpCutApplied = true;
+            }
+
+            if (!IsGrounded() && m_Input.DashHeld)
+            {
+                m_Rigidbody.linearVelocity = new Vector2(m_Rigidbody.linearVelocity.x, -airDashFallSpeed);
             }
 
             if (m_Input.JumpPressed && IsGrounded())

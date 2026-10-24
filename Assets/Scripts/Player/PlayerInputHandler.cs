@@ -9,6 +9,7 @@ namespace Game.Input
         public bool JumpPressed { get; private set; }
         public bool JumpHeld { get; private set; }
         public bool DashHeld { get; private set; }
+        public bool DashPressed { get; private set; }
 
         public event Action JumpPerformed;
         public event Action PausePerformed;
@@ -55,6 +56,7 @@ namespace Game.Input
         private void LateUpdate()
         {
             JumpPressed = false;
+            DashPressed = false;
         }
 
         private void OnJumpPerformed(InputAction.CallbackContext context)
@@ -72,6 +74,7 @@ namespace Game.Input
         private void OnDashPerformed(InputAction.CallbackContext context)
         {
             DashHeld = true;
+            DashPressed = true;
         }
 
         private void OnDashCanceled(InputAction.CallbackContext context)

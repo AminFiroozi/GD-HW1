@@ -10,7 +10,7 @@ namespace Game.Input
         [Header("Jump")]
         public float jumpSpeed = 14f;
         public float jumpCutMultiplier = 0.5f;
-        public float airDashFallSpeed = 20f;
+        public float airDashFallSpeed = 10f;
         public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);
         public float groundCheckRadius = 0.12f;
         public LayerMask groundLayer = ~0;
@@ -35,15 +35,15 @@ namespace Game.Input
         public Sprite[] dashFrames;
         public float dashFrameRate = 18f;
         public Sprite[] jumpFrames;
-        public float jumpFrameRate = 10f;
+        public float jumpFrameRate = 6f;
         public Sprite[] hurtFrames;
         public float hurtFrameRate = 15f;
-        public int postAnimationDelayFrames = 2;
+        public int postAnimationDelayFrames = 40;
         public Sprite[] deathFrames;
         public float deathFrameRate = 10f;
         public Sprite[] deathIdleFrames;
         public float deathIdleFrameRate = 8f;
-        public int postDeathDelayFrames = 20;
+        public int postDeathDelayFrames = 500;
 
         public bool IsDeathSequenceReadyForUI { get; private set; }
 
